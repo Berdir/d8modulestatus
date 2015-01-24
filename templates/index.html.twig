@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+    <meta charset="utf-8" />
+    <title>D8 Module Status</title>
+</head>
+<body>
+
+<table>
+    <tr>
+        <th>Project</th>
+        <th>PHPUnit</th>
+        <th>Simpletest</th>
+    </tr>
+
+    {% for project in projects %}
+    <tr>
+        <td>{{ project.name }}</td>
+        <td>{{ project.phpunit.assertions }} / {{ project.phpunit.failures }} / {{ project.phpunit.errors }}</td>
+        <td>{{ project.simpletest.assertions }} / {{ project.simpletest.failures }} / {{ project.simpletest.exceptions }}</td>
+    </tr>
+    {% endfor %}
+
+</table>
+
+</body>
+</html>

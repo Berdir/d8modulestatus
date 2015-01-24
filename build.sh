@@ -1,0 +1,37 @@
+#!/usr/bin/env bash
+
+rm -r results/*
+
+# Build the make file.
+rm -r www
+drush make --nocolor project.make www #> results/make.txt 2>&1
+
+# Install drupal
+cd www
+drush si -y --nocolor --db-url=mysql://d8modulestatus:d8modulestatus@localhost/d8modulestatus minimal
+
+# Enable simpletest
+drush en -y --nocolor simpletest
+
+# Define a mapping of non-standard test groups.
+declare -A groupMap
+groupMap[currency]=Currency
+
+# Loop over all projects.
+for FOLDER in `cd modules; ls -d1 */`; do
+  # Remove trailing / from foldername
+  PROJECT=${FOLDER%%/}
+  # Set simpletest group from the group map, default to project name.
+  GROUP=${groupMap[$PROJECT]:-$PROJECT}
+
+  echo ""
+  echo "=== Testing $PROJECT ==="
+  echo ""
+
+  # Prepare results folder.
+  mkdir -p ../results/$PROJECT/simpletest
+  phpunit -c core/phpunit.xml.dist --log-junit=../results/$PROJECT/phpunit.xml modules/$PROJECT/
+  php core/scripts/run-tests.sh --concurrency 8 --url http://d8modulestatus/ --xml ../results/$PROJECT/simpletest "$GROUP"
+done
+
+php parse_results.php
