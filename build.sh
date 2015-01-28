@@ -32,12 +32,14 @@ for FOLDER in `cd modules; ls -d1 */`; do
   # Prepare results folder.
   mkdir -p ../results-new/$PROJECT/simpletest
   phpunit -c core/phpunit.xml.dist --log-junit=../results-new/$PROJECT/phpunit.xml modules/$PROJECT/
-  php core/scripts/run-tests.sh --concurrency 8 --url http://d8modulestatus/ --xml ../results-new/$PROJECT/simpletest "$GROUP"
+  php core/scripts/run-tests.sh --concurrency 2 --url http://d8modulestatus/ --xml ../results-new/$PROJECT/simpletest "$GROUP"
 done
 
-php parse_results.php
+cd ..
 
 rm -r results-old
 mv results results-old
 mv results-new results
+
+php parse_results.php
 
