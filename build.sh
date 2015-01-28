@@ -1,10 +1,9 @@
 #!/usr/bin/env bash
 
-rm -r results/*
-
 # Build the make file.
+chmod -R 777 www
 rm -r www
-drush make --nocolor project.make www #> results/make.txt 2>&1
+drush make --nocolor project.make www
 
 # Install drupal
 cd www
@@ -29,9 +28,14 @@ for FOLDER in `cd modules; ls -d1 */`; do
   echo ""
 
   # Prepare results folder.
-  mkdir -p ../results/$PROJECT/simpletest
-  phpunit -c core/phpunit.xml.dist --log-junit=../results/$PROJECT/phpunit.xml modules/$PROJECT/
-  php core/scripts/run-tests.sh --concurrency 8 --url http://d8modulestatus/ --xml ../results/$PROJECT/simpletest "$GROUP"
+  mkdir -p ../results-new/$PROJECT/simpletest
+  phpunit -c core/phpunit.xml.dist --log-junit=../results-new/$PROJECT/phpunit.xml modules/$PROJECT/
+  php core/scripts/run-tests.sh --concurrency 8 --url http://d8modulestatus/ --xml ../results-new/$PROJECT/simpletest "$GROUP"
 done
 
 php parse_results.php
+
+rm -r results-old
+mv results results-old
+mv results-new results
+
