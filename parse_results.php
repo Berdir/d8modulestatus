@@ -30,7 +30,7 @@ foreach (new DirectoryIterator('results') as $file_info) {
 
 ksort($projects);
 
-$index = $twig->render('index.html.twig', ['projects' => $projects, 'timestamp' => date('Y-m-d H:i:s')]);
+$index = $twig->render('index.html.twig', ['projects' => $projects, 'timestamp' => date('Y-m-d H:i:s T')]);
 file_put_contents('results/index.html', $index);
 
 
