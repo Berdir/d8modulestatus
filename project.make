@@ -8,6 +8,7 @@ projects[drupal][version] = 8.0.x-dev
 ; Drupal.org projects
 projects[captcha][version] = "1.x-dev"
 projects[composer_manager][version] = "1.x-dev"
+projects[contact_storage][version] = "1.x-dev"
 projects[currency][version] = "3.x-dev"
 projects[dynamic_entity_reference][version] = "1.x-dev"
 projects[flag][version] = "4.x-dev"
@@ -24,6 +25,7 @@ projects[poll][version] = "1.x-dev"
 projects[search_api][version] = "1.x-dev"
 projects[sharemessage][version] = "1.x-dev"
 projects[simplenews][version] = "1.x-dev"
+projects[tmgmt][version] = "1.x-dev"
 
 ; Unofficial ports.
 projects[block_class][type] = "module"

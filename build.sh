@@ -15,6 +15,8 @@ drush en -y --nocolor simpletest
 # Define a mapping of non-standard test groups.
 declare -A groupMap
 groupMap[currency]=Currency
+groupMap[google_analytics]="Google Analytics"
+groupMap[payment]="Payment"
 
 # Loop over all projects.
 for FOLDER in `cd modules; ls -d1 */`; do
