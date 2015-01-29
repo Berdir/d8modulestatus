@@ -1,3 +1,6 @@
+# Projects in this file are grouped in projects already on drupal.org and
+# those elsewhere, each group is sorted alphabetically.
+
 api = 2
 core = 8.x
 
@@ -59,6 +62,11 @@ projects[globalredirect][download][type] = "git"
 projects[globalredirect][download][branch] = 8.x-1.x
 projects[globalredirect][download][url] = "https://github.com/md-systems/globalredirect.git"
 
+projects[mailsystem][type] = "module"
+projects[mailsystem][download][type] = "git"
+projects[mailsystem][download][branch] = 8.x-4.x
+projects[mailsystem][download][url] = "https://github.com/LukyLuke/mailsystem"
+
 projects[pathauto][type] = "module"
 projects[pathauto][download][type] = "git"
 projects[pathauto][download][branch] = 8.x-1.x
@@ -83,6 +91,11 @@ projects[simplenews_scheduler][type] = "module"
 projects[simplenews_scheduler][download][type] = "git"
 projects[simplenews_scheduler][download][branch] = 8.x-1.x
 projects[simplenews_scheduler][download][url] = "https://github.com/iwanfux/simplenews_scheduler"
+
+projects[swiftmailer][type] = "module"
+projects[swiftmailer][download][type] = "git"
+projects[swiftmailer][download][branch] = 8.x-1.x
+projects[swiftmailer][download][url] = "https://github.com/webflo/drupal-swiftmailer"
 
 projects[token][type] = "module"
 projects[token][download][type] = "git"
