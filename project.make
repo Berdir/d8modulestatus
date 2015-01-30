@@ -10,6 +10,7 @@ projects[drupal][version] = 8.0.x-dev
 
 ; Drupal.org projects
 projects[captcha][version] = "1.x-dev"
+projects[commerce][version] = "2.x-dev"
 projects[composer_manager][version] = "1.x-dev"
 projects[contact_storage][version] = "1.x-dev"
 projects[currency][version] = "3.x-dev"
@@ -21,16 +22,20 @@ projects[google_analytics][version] = "2.x-dev"
 projects[jw_player][version] = "1.x-dev"
 projects[libraries][version] = "3.x-dev"
 projects[maillog][version] = "1.x-dev"
+projects[media_entity][version] = "1.x-dev"
 projects[monitoring][version] = "1.x-dev"
 projects[page_manager][version] = "1.x-dev"
+projects[panels][version] = "3.x-dev"
 projects[past][[version] = "1.x-dev"
 projects[pathologic][version] = "1.x-dev"
 projects[payment][version] = "2.x-dev"
 projects[poll][version] = "1.x-dev"
+projects[rules][version] = "3.x-dev"
 projects[search_api][version] = "1.x-dev"
 projects[sharemessage][version] = "1.x-dev"
 projects[simplenews][version] = "1.x-dev"
 projects[tmgmt][version] = "1.x-dev"
+projects[xmlsitemap][version] = "1.x-dev"
 
 ; Unofficial ports.
 projects[block_class][type] = "module"
@@ -68,6 +73,11 @@ projects[mailsystem][type] = "module"
 projects[mailsystem][download][type] = "git"
 projects[mailsystem][download][branch] = 8.x-4.x
 projects[mailsystem][download][url] = "https://github.com/LukyLuke/mailsystem"
+
+projects[metatag][type] = "module"
+projects[metatag][download][type] = "git"
+projects[metatag][download][branch] = 8.x-4.x
+projects[metatag][download][url] = "http://git.drupal.org/sandbox/valthebald/2339829.git"
 
 projects[pathauto][type] = "module"
 projects[pathauto][download][type] = "git"
