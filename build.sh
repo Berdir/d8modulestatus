@@ -1,8 +1,10 @@
 #!/usr/bin/env bash
 
 # Build the make file.
-chmod -R 777 www
-rm -r www
+if [ -d "$DIRECTORY" ]; then
+  chmod -R 777 www
+  rm -r www
+fi
 drush make --nocolor project.make www
 
 # Install drupal
@@ -42,4 +44,3 @@ mv results results-old
 mv results-new results
 
 php parse_results.php
-
