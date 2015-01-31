@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
 # Build the make file.
-if [ -d "$DIRECTORY" ]; then
+if [ -d www ]; then
   chmod -R 777 www
   rm -r www
 fi
