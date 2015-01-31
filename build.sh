@@ -3,7 +3,7 @@
 # Build the make file.
 chmod -R 777 www
 rm -r www
-drush make --nocolor project.make www
+drush make --nocolor --force-complete project.make www
 
 # Install drupal
 cd www
