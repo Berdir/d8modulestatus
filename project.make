@@ -39,7 +39,8 @@ projects[search_api][version] = "1.x-dev"
 projects[sharemessage][version] = "1.x-dev"
 projects[simplenews][version] = "1.x-dev"
 projects[tmgmt][version] = "1.x-dev"
-projects[xmlsitemap][version] = "1.x-dev"
+; Commented out, syntax error in tests
+;projects[xmlsitemap][version] = "1.x-dev"
 
 ; Unofficial ports.
 projects[block_class][type] = "module"
