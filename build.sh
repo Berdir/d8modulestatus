@@ -9,8 +9,13 @@ drush make --nocolor --force-complete project.make www
 cd www
 drush si -y --nocolor --db-url=mysql://d8modulestatus:d8modulestatus@localhost/d8modulestatus minimal
 
-# Enable simpletest
-drush en -y --nocolor simpletest
+# Enable simpletest and composer manager
+drush en -y --nocolor simpletest composer_manager
+
+# Update composer dependencies
+php ./modules/composer_manager/scripts/init.sh
+cd core
+composer drupal-update
 
 # Define a mapping of non-standard test groups.
 declare -A groupMap
