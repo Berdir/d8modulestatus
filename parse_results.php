@@ -5,26 +5,26 @@ require_once 'vendor/autoload.php';
 $loader = new Twig_Loader_Filesystem('templates');
 $twig = new Twig_Environment($loader);
 
+$projects = parse_results('results');
+if (is_dir('results-old')) {
+  $projects_old = parse_results('results-old');
+}
 
-$projects = array();
-foreach (new DirectoryIterator('results') as $file_info) {
-  if ($file_info->isDir() && !$file_info->isDot()) {
-    $project = [
-      'name' => $file_info->getFilename(),
-      'phpunit' => [],
-      'simpletest' => [],
-    ];
+foreach ($projects as $name => &$project) {
+  if (!isset($projects_old[$name])) {
+    $project['new'] = TRUE;
+    continue;
+  }
 
-    if (file_exists($file_info->getPathName() . '/phpunit.xml')) {
-      $phpunit = simplexml_load_file($file_info->getPathName() . '/phpunit.xml');
-      $project['phpunit']['assertions'] = (int) $phpunit->testsuite['assertions'];
-      $project['phpunit']['failures'] = (int) $phpunit->testsuite['failures'];
-      $project['phpunit']['errors'] = (int) $phpunit->testsuite['errrors'];
+  foreach (['phpunit', 'simpletest'] as $framework) {
+    if (!isset($project[$framework])) {
+      continue;
     }
-
-    $project['simpletest'] = get_simpletest_results($file_info->getPathname());
-
-    $projects[$project['name']] = $project;
+    foreach ($project[$framework] as $type => $count) {
+      if (isset($projects_old[$name][$framework][$type])) {
+        $project[$framework][$type . '_diff'] = $count - $projects_old[$name][$framework][$type];
+      }
+    }
   }
 }
 
@@ -32,7 +32,36 @@ ksort($projects);
 
 $index = $twig->render('index.html.twig', ['projects' => $projects, 'timestamp' => date('Y-m-d H:i:s T')]);
 file_put_contents('results/index.html', $index);
+file_put_contents('results/projects.json', json_encode($projects, JSON_PRETTY_PRINT));
 
+/**
+ * @param $path
+ *
+ * @return array
+ */
+function parse_results($path) {
+  $projects = array();
+  foreach (new DirectoryIterator($path) as $file_info) {
+    if ($file_info->isDir() && !$file_info->isDot()) {
+      $project = [
+        'name' => $file_info->getFilename(),
+        'phpunit' => [],
+        'simpletest' => [],
+      ];
+      $phpunit_file = $file_info->getPathName() . '/phpunit.xml';
+      if (file_exists($phpunit_file) && filesize($phpunit_file) > 0) {
+        $phpunit = simplexml_load_file($phpunit_file);
+        $project['phpunit']['assertions'] = (int) $phpunit->testsuite['assertions'];
+        $project['phpunit']['failures'] = (int) $phpunit->testsuite['failures'];
+        $project['phpunit']['errors'] = (int) $phpunit->testsuite['errrors'];
+      }
+      $project['simpletest'] = get_simpletest_results($file_info->getPathname());
+      $projects[$project['name']] = $project;
+    }
+  }
+
+  return $projects;
+}
 
 /**
  * Returns simpletest test results.

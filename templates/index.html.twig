@@ -18,6 +18,14 @@
     background-color: red;
 }
 
+.more {
+    font-weight: bold;
+}
+
+.less {
+    font-weight: bold;
+}
+
 </style>
 </head>
 
@@ -37,12 +45,72 @@
     <tr>
         <td>{{ project.name }}</td>
         {% if project.phpunit.assertions %}
-            <td class="phpunit {{ project.phpunit.failures or project.phpunit.errors ? 'fails' : 'pass' }}">{{ project.phpunit.assertions }} / {{ project.phpunit.failures }} / {{ project.phpunit.errors }}</td>
+            <td class="phpunit {{ project.phpunit.failures or project.phpunit.errors ? 'fails' : 'pass' }}">
+                {{ project.phpunit.assertions }}
+                {% if project.phpunit.assertions_diff %}
+                  {% if project.phpunit.assertions_diff > 0 %}
+                    <span class="more">( +{{ project.phpunit.assertions_diff }} )</span>
+                  {% else %}
+                    <span class="less">( {{ project.phpunit.assertions_diff }} )</span>
+                  {% endif %}
+
+                {% endif %}
+                /
+                {{ project.phpunit.failures }}
+                {% if project.phpunit.assertions_diff %}
+                    {% if project.phpunit.failures_diff > 0 %}
+                        <span class="more">( +{{ project.phpunit.failures_diff }} )</span>
+                    {% else %}
+                        <span class="less">( {{ project.phpunit.failures_diff }} )</span>
+                    {% endif %}
+
+                {% endif %}
+                /
+                {{ project.phpunit.errors }}
+                {% if project.phpunit.errors_diff %}
+                    {% if project.phpunit.errors_diff > 0 %}
+                        <span class="more">( +{{ project.phpunit.errors_diff }} )</span>
+                    {% else %}
+                        <span class="less">( {{ project.phpunit.errors_diff }} )</span>
+                    {% endif %}
+
+                {% endif %}
+            </td>
         {% else %}
             <td class="phpunit unknown">-</td>
         {% endif %}
         {% if project.simpletest.assertions %}
-            <td class="simpletest {{ project.simpletest.failures or project.simpletest.errors ? 'fails' : 'pass' }}">{{ project.simpletest.assertions }} / {{ project.simpletest.failures }} / {{ project.simpletest.errors }}</td>
+            <td class="simpletest {{ project.simpletest.failures or project.simpletest.errors ? 'fails' : 'pass' }}">
+                {{ project.simpletest.assertions }}
+                {% if project.simpletest.assertions_diff %}
+                    {% if project.simpletest.assertions_diff > 0 %}
+                        <span class="more">( +{{ project.simpletest.assertions_diff }} )</span>
+                    {% else %}
+                        <span class="less">( {{ project.simpletest.assertions_diff }} )</span>
+                    {% endif %}
+
+                {% endif %}
+                /
+                {{ project.simpletest.failures }}
+                {% if project.simpletest.assertions_diff %}
+                    {% if project.simpletest.failures_diff > 0 %}
+                        <span class="more">( +{{ project.simpletest.failures_diff }} )</span>
+                    {% else %}
+                        <span class="less">( {{ project.simpletest.failures_diff }} )</span>
+                    {% endif %}
+
+                {% endif %}
+                /
+                {{ project.simpletest.errors }}
+                {% if project.simpletest.errors_diff %}
+                    {% if project.simpletest.errors_diff > 0 %}
+                        <span class="more">( +{{ project.simpletest.errors_diff }} )</span>
+                    {% else %}
+                        <span class="less">( {{ project.simpletest.errors_diff }} )</span>
+                    {% endif %}
+
+                {% endif %}
+            </td>
         {% else %}
             <td class="simpletest unknown">-</td>
         {% endif %}
@@ -51,15 +119,35 @@
 
 </table>
 
-<h2>This looks ugly?</h2>
+<h2>FAQ</h2>
+
+<h3>What is this?</h3>
+<p>This is a daily script that runs the tests of all the mentioned projects above and displays a summary, including changes to the previous day.</p>
+
+<p>More features are planned (like drupal.org issue queue statistics), if you have an idea or want to help, click on fork.</p>
+
+<h3>What do those numbers tell me?</h3>
+<p>They give an idea if a module is working, or if recent or not so recent changes in Drupal core broke their tests.</p>
+
+<p>Passing tests does not mean that a module works (Some modules are being developed and incomplete), <br />
+    failing tests do not mean that a module does not, but it is an indicator that something is wrong. <br />
+    Especially if the tests used to pass.</p>
+
+<p>
+    If a module has no tests, then we simply don't know. Go and write some!
+</p>
+
+<h3>This looks ugly?</h3>
 <p>Yeah. Fork and improve it :)</p>
 
-<h2>Module xy is missing?</h2>
+<h3>Module xy is missing?</h3>
 <p>Create a pull requests that adds it to projekt.make and I'll include it.</p>
 
 <p>Last updated: {{ timestamp }}</p>
 
 <p>Build log: <a href="build.log">build.log</a></p>
+
+<p>JSON: <a href="projects.json">projects.json</a></p>
 
 <p>Maintained by <a href="http://drupal.org/user/214652">@berdir</a>.</p>
 
