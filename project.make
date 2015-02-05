@@ -21,6 +21,7 @@ projects[entity_browser][version] = "1.x-dev"
 projects[entity_embed][version] = "1.x-dev"
 projects[flag][version] = "4.x-dev"
 projects[google_analytics][version] = "2.x-dev"
+projects[honeypot][version] = "1.x-dev"
 projects[inmail][version] = "1.x-dev"
 projects[jw_player][version] = "1.x-dev"
 projects[layout_plugin][version] = "1.x-dev"
@@ -43,6 +44,7 @@ projects[simplenews][version] = "1.x-dev"
 projects[tmgmt][version] = "1.x-dev"
 ; Commented out, syntax error in tests
 ;projects[xmlsitemap][version] = "1.x-dev"
+projects[wysiwyg_linebreaks][version] = "1.x-dev"
 
 ; Unofficial ports.
 projects[block_class][type] = "module"
