@@ -12,10 +12,15 @@ drush si -y --nocolor --db-url=mysql://d8modulestatus:d8modulestatus@localhost/d
 # Enable simpletest and composer manager
 drush en -y --nocolor simpletest composer_manager
 
+# Temporary: Delete invalid composer.json files.
+find modules -name composer.json | xargs grep -L name 
+find modules -name composer.json | xargs grep -L name | xargs rm
+
 # Update composer dependencies
 php ./modules/composer_manager/scripts/init.sh
 cd core
-composer drupal-update
+/usr/local/bin/composer drupal-update
+cd ..
 
 # Define a mapping of non-standard test groups.
 declare -A groupMap
