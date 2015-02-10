@@ -54,6 +54,11 @@ projects[block_class][download][type] = "git"
 projects[block_class][download][branch] = "8.0.x-1.x"
 projects[block_class][download][url] = "http://git.drupal.org/sandbox/YaronTal/2345855.git"
 
+projects[diff][type] = "module"
+projects[diff][download][type] = "git"
+projects[diff][download][branch] = refactor_to_plugins
+projects[diff][download][url] = http://git.drupal.org/sandbox/lhangea/2269693.git
+
 projects[default_content][type] = "module"
 projects[default_content][download][type] = "git"
 projects[default_content][download][branch] = 8.x
