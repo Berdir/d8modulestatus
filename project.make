@@ -16,6 +16,7 @@ projects[composer_manager][version] = "1.x-dev"
 projects[contact_storage][version] = "1.x-dev"
 projects[currency][version] = "3.x-dev"
 projects[ds][version] = "2.x-dev"
+projects[diff][version] = "1.x-dev"
 projects[dynamic_entity_reference][version] = "1.x-dev"
 projects[entity_browser][version] = "1.x-dev"
 projects[entity_embed][version] = "1.x-dev"
@@ -53,11 +54,6 @@ projects[block_class][type] = "module"
 projects[block_class][download][type] = "git"
 projects[block_class][download][branch] = "8.0.x-1.x"
 projects[block_class][download][url] = "http://git.drupal.org/sandbox/YaronTal/2345855.git"
-
-projects[diff][type] = "module"
-projects[diff][download][type] = "git"
-projects[diff][download][branch] = refactor_to_plugins
-projects[diff][download][url] = http://git.drupal.org/sandbox/lhangea/2269693.git
 
 projects[default_content][type] = "module"
 projects[default_content][download][type] = "git"
