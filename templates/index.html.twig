@@ -43,7 +43,7 @@
 
     {% for project in projects %}
     <tr>
-        <td><a href="http://www.drupal.org/project/{{ project.name }}">{{ project.name }}</a></td>
+        <td>{{ project.name }}</td>
         {% if project.phpunit.assertions %}
             <td class="phpunit {{ project.phpunit.failures or project.phpunit.errors ? 'fails' : 'pass' }}">
                 {{ project.phpunit.assertions }}
