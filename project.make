@@ -8,6 +8,9 @@ core = 8.x
 projects[drupal][type] = core
 projects[drupal][version] = 8.0.x-dev
 
+; Fixes notices when generating simpletest xml files.
+projects[drupal][patch][] = https://www.drupal.org/files/issues/prevent-notices-if-function-is-not-a-method-2417727-3.patch
+
 ; Drupal.org projects
 projects[captcha][version] = "1.x-dev"
 projects[collect][version] = "1.x-dev"
