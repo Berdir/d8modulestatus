@@ -2,6 +2,15 @@
 
 require_once 'vendor/autoload.php';
 
+use Symfony\Component\Yaml\Yaml;
+
+/**
+ * Drupal.org project url pattern.
+ */
+const DRUPAL_PROJECT_URL = 'https://www.drupal.org/project';
+
+$config = Yaml::parse(file_get_contents(__DIR__ . '/config.yml'));
+
 $loader = new Twig_Loader_Filesystem('templates');
 $twig = new Twig_Environment($loader);
 
@@ -15,6 +24,8 @@ foreach ($projects as $name => &$project) {
     $project['new'] = TRUE;
     continue;
   }
+
+  $project['url'] = get_project_url($name, $config['projects']);
 
   foreach (['phpunit', 'simpletest'] as $framework) {
     if (!isset($project[$framework])) {
@@ -88,4 +99,22 @@ function get_simpletest_results($project_dir) {
     }
   }
   return $results;
+}
+
+/**
+ * Get a project url.
+ *
+ * @param string $name
+ *   Project name
+ * @param array $config
+ *   An array keyed by project name that can contain an override url.
+ *
+ * @return string
+ *   Project url.
+ */
+function get_project_url($name, $config) {
+  if (isset($config[$name]['url'])) {
+    return $config[$name]['url'];
+  }
+  return DRUPAL_PROJECT_URL . '/' . $name;
 }
