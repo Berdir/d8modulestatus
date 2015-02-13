@@ -7,7 +7,7 @@ use Symfony\Component\Yaml\Yaml;
 /**
  * Drupal.org project url pattern.
  */
-const DRUPAL_PROJECT_URL='https://www.drupal.org/project';
+const DRUPAL_PROJECT_URL = 'https://www.drupal.org/project';
 
 $config = Yaml::parse(file_get_contents(__DIR__ . '/config.yml'));
 
