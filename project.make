@@ -23,6 +23,7 @@ projects[ds][version] = "2.x-dev"
 projects[dynamic_entity_reference][version] = "1.x-dev"
 projects[entity_browser][version] = "1.x-dev"
 projects[entity_embed][version] = "1.x-dev"
+projects[entityform_block][version] = "1.x-dev"
 projects[flag][version] = "4.x-dev"
 projects[google_analytics][version] = "2.x-dev"
 projects[honeypot][version] = "1.x-dev"
@@ -62,11 +63,6 @@ projects[default_content][type] = "module"
 projects[default_content][download][type] = "git"
 projects[default_content][download][branch] = 8.x
 projects[default_content][download][url] = "https://github.com/larowlan/default_content.git"
-
-projects[entityform_block][type] = "module"
-projects[entityform_block][download][type] = "git"
-projects[entityform_block][download][branch] = 8.x-1.x
-projects[entityform_block][download][url] = "https://github.com/md-systems/entityform_block"
 
 projects[fallback_formatter][type] = "module"
 projects[fallback_formatter][download][type] = "git"
