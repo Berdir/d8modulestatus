@@ -110,6 +110,11 @@ projects[redirect][download][type] = "git"
 projects[redirect][download][branch] = 8.x-1.x
 projects[redirect][download][url] = "https://github.com/md-systems/redirect.git"
 
+projects[redis][type] = "module"
+projects[redis][download][type] = "git"
+projects[redis][download][branch] = 8.x-1.x
+projects[redis][download][url] = "https://github.com/md-systems/redis.git"
+
 projects[search_api_solr][type] = "module"
 projects[search_api_solr][download][type] = "git"
 projects[search_api_solr][download][branch] = 8.x-1.x
