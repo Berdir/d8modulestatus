@@ -59,6 +59,11 @@ projects[block_class][download][type] = "git"
 projects[block_class][download][branch] = "8.0.x-1.x"
 projects[block_class][download][url] = "http://git.drupal.org/sandbox/YaronTal/2345855.git"
 
+projects[crm_core][type] = "module"
+projects[crm_core][download][type] = "git"
+projects[crm_core][download][branch] = "8.x-0.x"
+projects[crm_core][download][url] = "https://github.com/md-systems/crm_core.git"
+
 projects[default_content][type] = "module"
 projects[default_content][download][type] = "git"
 projects[default_content][download][branch] = 8.x
