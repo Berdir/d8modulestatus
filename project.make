@@ -48,6 +48,7 @@ projects[rules][version] = "3.x-dev"
 projects[search_api][version] = "1.x-dev"
 projects[sharemessage][version] = "1.x-dev"
 projects[simplenews][version] = "1.x-dev"
+projects[token][version] = "1.x-dev"
 projects[tmgmt][version] = "1.x-dev"
 ; Commented out, syntax error in tests
 ;projects[xmlsitemap][version] = "1.x-dev"
@@ -134,11 +135,6 @@ projects[swiftmailer][type] = "module"
 projects[swiftmailer][download][type] = "git"
 projects[swiftmailer][download][branch] = 8.x-1.x
 projects[swiftmailer][download][url] = "https://github.com/webflo/drupal-swiftmailer"
-
-projects[token][type] = "module"
-projects[token][download][type] = "git"
-projects[token][download][branch] = 8.x-1.x
-projects[token][download][url] = "https://github.com/larowlan/token.git"
 
 projects[ultimate_cron][type] = "module"
 projects[ultimate_cron][download][type] = "git"
