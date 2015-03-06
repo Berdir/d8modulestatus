@@ -1,12 +1,12 @@
 #!/usr/bin/env bash
 
 # Build the make file.
-chmod -R 777 www
-rm -r www
-drush make --working-copy --nocolor --force-complete project.make www
+chmod -R 777 internal
+rm -r internal
+drush make --working-copy --nocolor --force-complete project.make internal
 
 # Install drupal
-cd www
+cd internal
 drush si -y --nocolor --db-url=mysql://d8modulestatus:d8modulestatus@localhost/d8modulestatus minimal
 
 # Enable simpletest and composer manager
@@ -39,17 +39,17 @@ for FOLDER in `cd modules; ls -d1 */`; do
   echo "=== Testing $PROJECT ==="
   echo ""
 
-  # Prepare results folder.
-  mkdir -p ../results-new/$PROJECT/simpletest
-  phpunit -c core/phpunit.xml.dist --log-junit=../results-new/$PROJECT/phpunit.xml modules/$PROJECT/
-  php core/scripts/run-tests.sh --concurrency 1 --url http://d8modulestatus/ --xml ../results-new/$PROJECT/simpletest "$GROUP"
+  # Prepare www folder.
+  mkdir -p ../www-new/$PROJECT/simpletest
+  phpunit -c core/phpunit.xml.dist --log-junit=../www-new/$PROJECT/phpunit.xml modules/$PROJECT/
+  php core/scripts/run-tests.sh --concurrency 1 --url http://d8modulestatus/ --xml ../www-new/$PROJECT/simpletest "$GROUP"
 done
 
 cd ..
 
-rm -r results-old
-mv results results-old
-mv results-new results
+rm -r www-old
+mv www www-old
+mv www-new www
 
 php parse_results.php
 
