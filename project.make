@@ -50,6 +50,7 @@ projects[rules][version] = "3.x-dev"
 projects[search_api][version] = "1.x-dev"
 projects[sharemessage][version] = "1.x-dev"
 projects[simplenews][version] = "1.x-dev"
+projects[simplenews_scheduler][version] = "1.x-dev"
 projects[token][version] = "1.x-dev"
 projects[tmgmt][version] = "1.x-dev"
 ; Commented out, syntax error in tests
@@ -127,11 +128,6 @@ projects[search_api_solr][type] = "module"
 projects[search_api_solr][download][type] = "git"
 projects[search_api_solr][download][branch] = 8.x-1.x
 projects[search_api_solr][download][url] = "https://github.com/amateescu/search_api_solr.git"
-
-projects[simplenews_scheduler][type] = "module"
-projects[simplenews_scheduler][download][type] = "git"
-projects[simplenews_scheduler][download][branch] = 8.x-1.x
-projects[simplenews_scheduler][download][url] = "https://github.com/iwanfux/simplenews_scheduler"
 
 projects[swiftmailer][type] = "module"
 projects[swiftmailer][download][type] = "git"
