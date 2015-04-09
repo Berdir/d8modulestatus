@@ -15,27 +15,28 @@ $loader = new Twig_Loader_Filesystem('templates');
 $twig = new Twig_Environment($loader);
 
 // First, move simpletest results into the correct project.
-foreach (new DirectoryIterator('www/simpletest') as $simpletest_file_info) {
-  if ($simpletest_file_info->isFile() && preg_match('/Drupal_(.+)_Tests/', $simpletest_file_info->getFilename(), $matches)) {
-    $name = $matches[1];
-
-    // Find the right project.
-    do {
-      // Check if a project with that name exists.
-      if (is_dir('www/' . $name . '/simpletest')) {
-        // Move the file, continue with the next.
-        rename($simpletest_file_info->getPathname(), 'www/' . $name . '/simpletest/' . $simpletest_file_info->getFilename());
-        continue 2;
-      }
-      // If the name has no _ left, continue with the next file, display an
-      // error.
-      if (strpos($name, '_') === FALSE) {
-        print "ERROR: Failed to move simpletest to the correct project: " . $simpletest_file_info->getFilename() . "\n";
-      }
-    } while ($name = substr($name, 0, strrpos($name, '_')));
+if (is_dir('www/simpletest')) {
+  foreach (new DirectoryIterator('www/simpletest') as $simpletest_file_info) {
+    if ($simpletest_file_info->isFile() && preg_match('/Drupal_(.+)_Tests/', $simpletest_file_info->getFilename(), $matches)) {
+      $name = $matches[1];
+      // Find the right project.
+      do {
+        // Check if a project with that name exists.
+        if (is_dir('www/' . $name . '/simpletest')) {
+          // Move the file, continue with the next.
+          rename($simpletest_file_info->getPathname(), 'www/' . $name . '/simpletest/' . $simpletest_file_info->getFilename());
+          continue 2;
+        }
+        // If the name has no _ left, continue with the next file, display an
+        // error.
+        if (strpos($name, '_') === FALSE) {
+          print "ERROR: Failed to move simpletest to the correct project: " . $simpletest_file_info->getFilename() . "\n";
+        }
+      } while ($name = substr($name, 0, strrpos($name, '_')));
+    }
   }
+  rmdir('www/simpletest');
 }
-rmdir('www/simpletest');
 
 $projects = parse_results('www');
 if (is_dir('www-old')) {
