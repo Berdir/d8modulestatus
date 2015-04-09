@@ -55,6 +55,8 @@ projects[simplenews][version] = "1.x-dev"
 projects[simplenews_scheduler][version] = "1.x-dev"
 projects[token][version] = "1.x-dev"
 projects[tmgmt][version] = "1.x-dev"
+projects[tmgmt_google][version] = "1.x-dev"
+projects[tmgmt_microsoft][version] = "1.x-dev"
 ; Commented out, syntax error in tests
 ;projects[xmlsitemap][version] = "1.x-dev"
 projects[wysiwyg_linebreaks][version] = "1.x-dev"
@@ -116,6 +118,16 @@ projects[payment_datatrans][download][type] = "git"
 projects[payment_datatrans][download][branch] = master
 projects[payment_datatrans][download][url] = "https://github.com/md-systems/datatrans.git"
 
+projects[payment_postfinanance][type] = "module"
+projects[payment_postfinanance][download][type] = "git"
+projects[payment_postfinanance][download][branch] = master
+projects[payment_postfinanance][download][url] = "https://github.com/md-systems/postfinance.git"
+
+projects[payment_saferpay][type] = "module"
+projects[payment_saferpay][download][type] = "git"
+projects[payment_saferpay][download][branch] = master
+projects[payment_saferpay][download][url] = "https://github.com/md-systems/saferpay.git"
+
 projects[redirect][type] = "module"
 projects[redirect][download][type] = "git"
 projects[redirect][download][branch] = 8.x-1.x
@@ -135,6 +147,11 @@ projects[swiftmailer][type] = "module"
 projects[swiftmailer][download][type] = "git"
 projects[swiftmailer][download][branch] = 8.x-1.x
 projects[swiftmailer][download][url] = "https://github.com/webflo/drupal-swiftmailer"
+
+projects[tmgmt_mygengo][type] = "module"
+projects[tmgmt_mygengo][download][type] = "git"
+projects[tmgmt_mygengo][download][branch] = 8.x-1.x
+projects[tmgmt_mygengo][download][url] = "https://github.com/das-peter/tmgmt_mygengo.git"
 
 projects[ultimate_cron][type] = "module"
 projects[ultimate_cron][download][type] = "git"
