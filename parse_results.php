@@ -14,9 +14,9 @@ $config = Yaml::parse(file_get_contents(__DIR__ . '/config.yml'));
 $loader = new Twig_Loader_Filesystem('templates');
 $twig = new Twig_Environment($loader);
 
-$projects = parse_results('results');
-if (is_dir('results-old')) {
-  $projects_old = parse_results('results-old');
+$projects = parse_results('www');
+if (is_dir('www-old')) {
+  $projects_old = parse_results('www-old');
 }
 
 foreach ($projects as $name => &$project) {
@@ -42,8 +42,8 @@ foreach ($projects as $name => &$project) {
 ksort($projects);
 
 $index = $twig->render('index.html.twig', ['projects' => $projects, 'timestamp' => date('Y-m-d H:i:s T')]);
-file_put_contents('results/index.html', $index);
-file_put_contents('results/projects.json', json_encode($projects, JSON_PRETTY_PRINT));
+file_put_contents('www/index.html', $index);
+file_put_contents('www/projects.json', json_encode($projects, JSON_PRETTY_PRINT));
 
 /**
  * @param $path
