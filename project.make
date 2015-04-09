@@ -125,7 +125,7 @@ projects[payment_postfinanance][download][url] = "https://github.com/md-systems/
 
 projects[payment_saferpay][type] = "module"
 projects[payment_saferpay][download][type] = "git"
-projects[payment_saferpay][download][branch] = master
+projects[payment_saferpay][download][branch] = 8.x-1.x
 projects[payment_saferpay][download][url] = "https://github.com/md-systems/saferpay.git"
 
 projects[redirect][type] = "module"
