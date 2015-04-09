@@ -19,10 +19,6 @@ drush en -y --nocolor simpletest composer_manager
 # Temporary: Delete invalid composer.json files.
 find modules -name composer.json | xargs grep -L name 
 find modules -name composer.json | xargs grep -L name | xargs rm
-rm modules/inmail/inmail_phpmailerbmh/composer.json
-rm modules/inmail/inmail_cfortune/composer.json
-rm modules/inmail/composer.json
-
 
 # Update composer dependencies
 
