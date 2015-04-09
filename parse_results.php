@@ -16,7 +16,7 @@ $twig = new Twig_Environment($loader);
 
 // First, move simpletest results into the correct project.
 foreach (new DirectoryIterator('www/simpletest') as $simpletest_file_info) {
-  if ($simpletest_file_info->isFile() && preg_match('Drupal_(.+)_Tests', $simpletest_file_info->getFilename(), $matches)) {
+  if ($simpletest_file_info->isFile() && preg_match('/Drupal_(.+)_Tests/', $simpletest_file_info->getFilename(), $matches)) {
     $name = $matches[1];
 
     // Find the right project.
