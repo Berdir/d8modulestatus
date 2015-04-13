@@ -98,6 +98,11 @@ projects[mailsystem][download][type] = "git"
 projects[mailsystem][download][branch] = 8.x-4.x
 projects[mailsystem][download][url] = "https://github.com/LukyLuke/mailsystem"
 
+projects[media_pinkeye][type] = "module"
+projects[media_pinkeye][download][type] = "git"
+projects[media_pinkeye][download][branch] = 8.x-1.x
+projects[media_pinkeye][download][url] = "https://github.com/drupal-media/media_pinkeye"
+
 projects[metatag][type] = "module"
 projects[metatag][download][type] = "git"
 projects[metatag][download][branch] = 8.x-1.x
