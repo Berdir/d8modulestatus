@@ -94,6 +94,11 @@ projects[globalredirect][download][type] = "git"
 projects[globalredirect][download][branch] = 8.x-1.x
 projects[globalredirect][download][url] = "https://github.com/md-systems/globalredirect.git"
 
+projects[inline_entity_form][type] = "module"
+projects[inline_entity_form][download][type] = "git"
+projects[inline_entity_form][download][branch] = 8.x-1.x
+projects[inline_entity_form][download][url] = "https://github.com/webflo/inline_entity_form.git"
+
 projects[mailsystem][type] = "module"
 projects[mailsystem][download][type] = "git"
 projects[mailsystem][download][branch] = 8.x-4.x
