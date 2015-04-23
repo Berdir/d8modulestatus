@@ -1,13 +1,17 @@
 #!/usr/bin/env bash
 
+
+MYSQLPASS=${1:-d8modulestatus}
+CONCURRENCY=${2:-2}
+
 # Build the make file.
-chmod -R 777 www
-rm -r www
-drush make --working-copy --nocolor --force-complete project.make www
+chmod -R 777 internal
+rm -r internal
+drush make --working-copy --nocolor --force-complete project.make internal
 
 # Install drupal
-cd www
-drush si -y --nocolor --db-url=mysql://d8modulestatus:d8modulestatus@localhost/d8modulestatus minimal
+cd internal
+drush si -y --nocolor --db-url=mysql://d8modulestatus:$MYSQLPASS@localhost/d8modulestatus minimal
 
 # Enable simpletest and composer manager
 drush en -y --nocolor simpletest composer_manager
@@ -17,39 +21,36 @@ find modules -name composer.json | xargs grep -L name
 find modules -name composer.json | xargs grep -L name | xargs rm
 
 # Update composer dependencies
+
 php ./modules/composer_manager/scripts/init.sh
 cd core
 /usr/local/bin/composer drupal-update
 cd ..
 
-# Define a mapping of non-standard test groups.
-declare -A groupMap
-groupMap[currency]=Currency
-groupMap[google_analytics]="Google Analytics"
-groupMap[payment]="Payment"
-
 # Loop over all projects.
 for FOLDER in `cd modules; ls -d1 */`; do
   # Remove trailing / from foldername
   PROJECT=${FOLDER%%/}
-  # Set simpletest group from the group map, default to project name.
-  GROUP=${groupMap[$PROJECT]:-$PROJECT}
 
   echo ""
   echo "=== Testing $PROJECT ==="
   echo ""
 
-  # Prepare results folder.
-  mkdir -p ../results-new/$PROJECT/simpletest
-  phpunit -c core/phpunit.xml.dist --log-junit=../results-new/$PROJECT/phpunit.xml modules/$PROJECT/
-  php core/scripts/run-tests.sh --concurrency 1 --url http://d8modulestatus/ --xml ../results-new/$PROJECT/simpletest "$GROUP"
+  # Prepare www folder.
+  mkdir -p ../www-new/$PROJECT/simpletest
+  ./core/vendor/bin/phpunit -c core/phpunit.xml.dist --log-junit=../www-new/$PROJECT/phpunit.xml modules/$PROJECT/
 done
+
+test_files=`find modules/ -name "*Test*.php" | grep src/Tests | paste -s -d,`
+
+mkdir -p ../www-new/simpletest
+php core/scripts/run-tests.sh --concurrency $CONCURRENCY --url http://d8modulestatus/ --xml ../www-new/simpletest --file "$test_files"
 
 cd ..
 
-rm -r results-old
-mv results results-old
-mv results-new results
+rm -r www-old
+mv www www-old
+mv www-new www
 
 php parse_results.php
 

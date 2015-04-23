@@ -1,4 +1,6 @@
-www
+www*
 .idea
 results*
 vendor
+internal
+build.log
