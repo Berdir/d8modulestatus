@@ -4,6 +4,9 @@
 MYSQLPASS=${1:-d8modulestatus}
 CONCURRENCY=${2:-2}
 
+mkdir -p www-new
+cp -rp assets www-new
+
 # Build the make file.
 chmod -R 777 internal
 rm -r internal
