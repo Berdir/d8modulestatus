@@ -1,157 +1,314 @@
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
 <head>
-    <meta charset="utf-8" />
+
+    <meta charset="utf-8">
     <title>D8 Module Status</title>
-<style media="screen" type="text/css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="">
 
-.unknown {
-    background-color: grey;
-    text-align: center;
-}
+    <!-- CSS -->
+    <link rel='stylesheet' href='http://fonts.googleapis.com/css?family=PT+Sans:400,700'>
+    <link rel="stylesheet" href="assets/bootstrap/css/bootstrap.css">
+    <link rel="stylesheet" href="assets/font-awesome/css/font-awesome.css">
+    <link rel="stylesheet" href="assets/css/social-icons.css">
+    <link rel="stylesheet" href="assets/css/style.css">
 
-.pass {
-    background-color: lightgreen;
-}
+    <!-- Javascript -->
+    <script src="assets/js/jquery-1.8.2.min.js"></script>
+    <script src="assets/js/jquery.backstretch.min.js"></script>
+    <script src="assets/js/scripts.js"></script>
 
-.fails {
-    background-color: red;
-}
+    <!-- HTML5 shim, for IE6-8 support of HTML5 elements -->
+    <!--[if lt IE 9]>
+    <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
 
-.more {
-    font-weight: bold;
-}
+    <script>
+        $(document).ready(function () {
+            var numOfAllModules = $('.table_row').length;
+            $('#all_modules').text(numOfAllModules);
+            var numOfPassedModules = $('.passed').length;
+            $('#passed_modules').text(numOfPassedModules);
+            var numOfFailedModules = $('.failed').length;
+            $('#failed_modules').text(numOfFailedModules);
+            var numOfChaingedModules = $('.changed').length;
+            $('#changed_modules').text(numOfChaingedModules);
 
-.less {
-    font-weight: bold;
-}
+            $('.selectpicker').on('change', function() {
+                if (this.value == 'all') {
+                    $('.table_row').show();
+                } else if (this.value == 'passed') {
+                    $('.failed').hide();
+                    $('.passed').show();
+                } else if (this.value == 'failed') {
+                    $('.passed').hide();
+                    $('.failed').show();
+                } else if (this.value == 'changed') {
+                    $('.not-changed').hide();
+                    $('.changed').show();
+                }
+            });
 
-</style>
+            $(window).unload(function() {
+                $('select option').remove();
+            });
+
+            $("#search").on("keyup", function() {
+                var value = $(this).val();
+
+                $("table tr").each(function(index) {
+                    if (index != 0) {
+
+                        $row = $(this);
+
+                        var id = $row.find("td:first").text();
+
+                        if (id.indexOf(value) != 0) {
+                            $(this).hide();
+                        }
+                        else {
+                            $(this).show();
+                        }
+                    }
+                });
+            });
+
+
+        });
+    </script>
+
+    <!-- Favicon and touch icons -->
+    <link rel="shortcut icon" href="assets/ico/favicon.ico">
 </head>
-
 
 <body>
 
-<h1>D8 Module Status</h1>
+<!-- Header -->
+<div class="container">
+    <div class="header row">
+        <div class="logo span12">
+            <h2><img src="assets/img/mdsystems_logo.png"></h2>
+        </div>
+        <!--<div class="tel-skype span8">
+            <p><i class="icon-phone-sign"></i> Phone: +41 44 500 45 95 <span class="pipe">|</span> <i class="icon-user"></i> Skype: info@md-systems.ch</p>
+        </div>-->
+    </div>
+</div>
 
-<table>
-    <tr>
-        <th>Project</th>
-        <th>PHPUnit</th>
-        <th>Simpletest</th>
-    </tr>
+<!-- Product Showcase -->
+<div class="product-showcase">
+    <div class="product-showcase-pattern">
+        <div class="container">
+            <div class="row">
+                <div class="span12 product-background">
+                    <div class="row">
+                        <div class="span5 product-image">
+                            <img src="assets/img/drupal_8.png" alt="">
+                        </div>
+                        <div class="span7 product-title">
+                            <h1>What is this?</h1>
+                            <div class="product-description">
+                                <p>This is a daily script that runs the tests of all the mentioned projects above and displays a summary, including changes to the previous day.</p>
+                                <p>More features are planned (like drupal.org issue queue statistics), if you have an idea or want to help, click on fork.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
 
-    {% for project in projects %}
-    <tr>
-        <td><a href="{{ project.url }}">{{ project.name }}</a></td>
-        {% if project.phpunit.assertions %}
-            <td class="phpunit {{ project.phpunit.failures or project.phpunit.errors ? 'fails' : 'pass' }}">
-                {{ project.phpunit.assertions }}
-                {% if project.phpunit.assertions_diff %}
-                  {% if project.phpunit.assertions_diff > 0 %}
-                    <span class="more">( +{{ project.phpunit.assertions_diff }} )</span>
-                  {% else %}
-                    <span class="less">( {{ project.phpunit.assertions_diff }} )</span>
-                  {% endif %}
+<!-- Content -->
+<div class="container">
 
-                {% endif %}
-                /
-                {{ project.phpunit.failures }}
-                {% if project.phpunit.assertions_diff %}
-                    {% if project.phpunit.failures_diff > 0 %}
-                        <span class="more">( +{{ project.phpunit.failures_diff }} )</span>
-                    {% else %}
-                        <span class="less">( {{ project.phpunit.failures_diff }} )</span>
-                    {% endif %}
+    <div class="row">
+        <div class="span12">
+            <!-- features -->
+            <div class="features_2">
+                <h3>D8 Module Status</h3>
+                <div class="row">
+                    <div class="span8 table-margin table-responsive">
+                        <div class="search">
+                            <label>Search:</label><input type="search" placeholder="" id="search"/>
+                        </div>
+                        <div class="filter">
+                            <label>Filter:</label>
+                            <select class="selectpicker">
+                                <option value="all" selected="selected">All</option>
+                                <option value="passed">Passed</option>
+                                <option value="failed">Failed</option>
+                                <option value="changed">Changed</option>
+                            </select> </div>
+                        <table class="features-table">
+                            <thead>
+                            <tr>
+                                <td>Project</td>
+                                <td>PHPUnit</td>
+                                <td>Simpletest</td>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            {% for project in projects %}
+                            <tr class="table_row {% if project.phpunit.failures > 0 or project.phpunit.errors > 0 or project.simpletest.failures > 0 or project.simpletest.errors > 0 %}failed{% else %}passed{% endif %}
+                             {% if project.phpunit.different == 'different' or project.simpletest.different == 'different' %} changed{% else %} not-changed{% endif %}">
+                            {#{{ project.phpunit.different or project.phpunit.different ? ' changed' : ' not-changed'}}">#}
+                                <td><a href="{{ project.url }}">{{ project.name }}</a></td>
+                                {% if project.phpunit.assertions %}
+                                    <td class="phpunit {{ project.phpunit.failures or project.phpunit.errors ? 'fails' : 'pass' }}">
+                                        <img src="assets/img/{% if project.phpunit.failures > 0 or project.phpunit.errors > 0 %}cross.png{% else %}check.png{% endif %}" class="table-icon" alt="check"/>
+                                        {{ project.phpunit.assertions }}
+                                        {% if project.phpunit.assertions_diff %}
+                                            {% if project.phpunit.assertions_diff > 0 %}
+                                                <span class="more">( +{{ project.phpunit.assertions_diff }} )</span>
+                                            {% else %}
+                                                <span class="less">( {{ project.phpunit.assertions_diff }} )</span>
+                                            {% endif %}
 
-                {% endif %}
-                /
-                {{ project.phpunit.errors }}
-                {% if project.phpunit.errors_diff %}
-                    {% if project.phpunit.errors_diff > 0 %}
-                        <span class="more">( +{{ project.phpunit.errors_diff }} )</span>
-                    {% else %}
-                        <span class="less">( {{ project.phpunit.errors_diff }} )</span>
-                    {% endif %}
+                                        {% endif %}
+                                        /
+                                        {{ project.phpunit.failures }}
+                                        {% if project.phpunit.assertions_diff %}
+                                            {% if project.phpunit.failures_diff > 0 %}
+                                                <span class="more">( +{{ project.phpunit.failures_diff }} )</span>
+                                            {% else %}
+                                                <span class="less">( {{ project.phpunit.failures_diff }} )</span>
+                                            {% endif %}
 
-                {% endif %}
-            </td>
-        {% else %}
-            <td class="phpunit unknown">-</td>
-        {% endif %}
-        {% if project.simpletest.assertions %}
-            <td class="simpletest {{ project.simpletest.failures or project.simpletest.errors ? 'fails' : 'pass' }}">
-                {{ project.simpletest.assertions }}
-                {% if project.simpletest.assertions_diff %}
-                    {% if project.simpletest.assertions_diff > 0 %}
-                        <span class="more">( +{{ project.simpletest.assertions_diff }} )</span>
-                    {% else %}
-                        <span class="less">( {{ project.simpletest.assertions_diff }} )</span>
-                    {% endif %}
+                                        {% endif %}
+                                        /
+                                        {{ project.phpunit.errors }}
+                                        {% if project.phpunit.errors_diff %}
+                                            {% if project.phpunit.errors_diff > 0 %}
+                                                <span class="more">( +{{ project.phpunit.errors_diff }} )</span>
+                                            {% else %}
+                                                <span class="less">( {{ project.phpunit.errors_diff }} )</span>
+                                            {% endif %}
 
-                {% endif %}
-                /
-                {{ project.simpletest.failures }}
-                {% if project.simpletest.assertions_diff %}
-                    {% if project.simpletest.failures_diff > 0 %}
-                        <span class="more">( +{{ project.simpletest.failures_diff }} )</span>
-                    {% else %}
-                        <span class="less">( {{ project.simpletest.failures_diff }} )</span>
-                    {% endif %}
+                                        {% endif %}
+                                    </td>
+                                {% else %}
+                                    <td class="phpunit unknown">-</td>
+                                {% endif %}
+                                {% if project.simpletest.assertions %}
+                                    <td class="simpletest {{ project.simpletest.failures or project.simpletest.errors ? 'fails' : 'pass' }}">
+                                        <img src="assets/img/{% if project.simpletest.failures > 0 or project.simpletest.errors > 0 %}cross.png{% else %}check.png{% endif %}" class="table-icon" alt="check"/>
+                                        {{ project.simpletest.assertions }}
+                                        {% if project.simpletest.assertions_diff %}
+                                            {% if project.simpletest.assertions_diff > 0 %}
+                                                <span class="more">( +{{ project.simpletest.assertions_diff }} )</span>
+                                            {% else %}
+                                                <span class="less">( {{ project.simpletest.assertions_diff }} )</span>
+                                            {% endif %}
 
-                {% endif %}
-                /
-                {{ project.simpletest.errors }}
-                {% if project.simpletest.errors_diff %}
-                    {% if project.simpletest.errors_diff > 0 %}
-                        <span class="more">( +{{ project.simpletest.errors_diff }} )</span>
-                    {% else %}
-                        <span class="less">( {{ project.simpletest.errors_diff }} )</span>
-                    {% endif %}
+                                        {% endif %}
+                                        /
+                                        {{ project.simpletest.failures }}
+                                        {% if project.simpletest.assertions_diff %}
+                                            {% if project.simpletest.failures_diff > 0 %}
+                                                <span class="more">( +{{ project.simpletest.failures_diff }} )</span>
+                                            {% else %}
+                                                <span class="less">( {{ project.simpletest.failures_diff }} )</span>
+                                            {% endif %}
 
-                {% endif %}
-            </td>
-        {% else %}
-            <td class="simpletest unknown">-</td>
-        {% endif %}
-    </tr>
-    {% endfor %}
+                                        {% endif %}
+                                        /
+                                        {{ project.simpletest.errors }}
+                                        {% if project.simpletest.errors_diff %}
+                                            {% if project.simpletest.errors_diff > 0 %}
+                                                <span class="more">( +{{ project.simpletest.errors_diff }} )</span>
+                                            {% else %}
+                                                <span class="less">( {{ project.simpletest.errors_diff }} )</span>
+                                            {% endif %}
 
-</table>
+                                        {% endif %}
+                                    </td>
+                                {% else %}
+                                    <td class="simpletest unknown">-</td>
+                                {% endif %}
+                            </tr>
+                            {% endfor %}
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="span3">
+                        <div class="icon_text">
+                            <div class="feature-icon">
+                                <i class="icon-info-sign"></i>
+                            </div>
+                            <div class="feature-text">
+                                <h4>Statistics</h4>
+                                <p>All modules: <span id="all_modules"></span></p>
+                                <p>Passing: <span id="passed_modules"></span></p>
+                                <p>Failing: <span id="failed_modules"></span></p>
+                                <p>Changed: <span id="changed_modules"></span></p>
+                                <p>Last updated: <span>{{ timestamp }}</span></p>
+                            </div>
+                        </div>
 
-<h2>FAQ</h2>
+                        <div class="icon_text">
+                            <div class="feature-icon">
+                                <i class="icon-file-alt"></i>
+                            </div>
+                            <div class="feature-text">
+                                <h4>Raw data</h4>
+                                <p>Build log: <a href="build.log" target="_blank">build.log</a></p>
+                                <p class="json">JSON:
+                                    <form action="assets/contact.php" method="post">
+                                        <a href="projects.json" target="_blank">projects.json</a>
+                                    </form>
+                                </p>
+                            </div>
+                        </div>
 
-<h3>What is this?</h3>
-<p>This is a daily script that runs the tests of all the mentioned projects above and displays a summary, including changes to the previous day.</p>
+                        <div class="icon_text">
+                        <div class="feature-icon">
+                            <i class="icon-question-sign"></i>
+                        </div>
+                            <div class="feature-text">
+                                <h4>What do those numbers tell me?</h4>
+                                <p>They give an idea if a module is working, or if recent or not so recent changes in Drupal core broke their tests.</p>
+                                <p>Passing tests does not mean that a module works (Some modules are being developed and incomplete), failing tests do not mean that a module does not, but it is an indicator that something is wrong. Especially if the tests used to pass.</p>
+                                <p>If a module has no tests, then we simply don't know. Go and write some! </p>
+                            </div>
+                        </div>
+                        <div class="clear"></div>
 
-<p>More features are planned (like drupal.org issue queue statistics), if you have an idea or want to help, click on fork.</p>
+                        <div class="icon_text">
+                            <div class="feature-icon">
+                                <i class="icon-bell"></i>
+                            </div>
+                            <div class="feature-text">
+                                <h4>Module xy is missing?</h4>
+                                <p>Create a pull requests that adds it to projekt.make and I'll include it.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div> <!-- end row -->
 
-<h3>What do those numbers tell me?</h3>
-<p>They give an idea if a module is working, or if recent or not so recent changes in Drupal core broke their tests.</p>
+    <a href="https://github.com/berdir/d8modulestatus"><img style="position: absolute; top: 0; right: 0; border: 0;" src="https://camo.githubusercontent.com/38ef81f8aca64bb9a64448d0d70f1308ef5341ab/68747470733a2f2f73332e616d617a6f6e6177732e636f6d2f6769746875622f726962626f6e732f666f726b6d655f72696768745f6461726b626c75655f3132313632312e706e67" alt="Fork me on GitHub" data-canonical-src="https://s3.amazonaws.com/github/ribbons/forkme_right_darkblue_121621.png"></a>
 
-<p>Passing tests does not mean that a module works (Some modules are being developed and incomplete), <br />
-    failing tests do not mean that a module does not, but it is an indicator that something is wrong. <br />
-    Especially if the tests used to pass.</p>
+</div> <!-- end container -->
 
-<p>
-    If a module has no tests, then we simply don't know. Go and write some!
-</p>
-
-<h3>This looks ugly?</h3>
-<p>Yeah. Fork and improve it :)</p>
-
-<h3>Module xy is missing?</h3>
-<p>Create a pull requests that adds it to projekt.make and I'll include it.</p>
-
-<p>Last updated: {{ timestamp }}</p>
-
-<p>Build log: <a href="build.log">build.log</a></p>
-
-<p>JSON: <a href="projects.json">projects.json</a></p>
-
-<p>Maintained by <a href="http://drupal.org/user/214652">@berdir</a>.</p>
-
-<a href="https://github.com/berdir/d8modulestatus"><img style="position: absolute; top: 0; right: 0; border: 0;" src="https://camo.githubusercontent.com/38ef81f8aca64bb9a64448d0d70f1308ef5341ab/68747470733a2f2f73332e616d617a6f6e6177732e636f6d2f6769746875622f726962626f6e732f666f726b6d655f72696768745f6461726b626c75655f3132313632312e706e67" alt="Fork me on GitHub" data-canonical-src="https://s3.amazonaws.com/github/ribbons/forkme_right_darkblue_121621.png"></a>
+<footer>
+    <div class="container">
+        <div class="row">
+            <div class="span12 copyright">
+                <p>Maintained by <a href="http://www.md-systems.ch/" target="_blank">MD Systems</a>.</p>
+            </div>
+        </div> <!-- end row -->
+        <div class="row">
+            <div class="span12 copyright">
+                <p>Drupal is a <a rel="nofollow" href="http://drupal.com/trademark">registered trademark</a> of <a rel="nofollow" href="http://buytaert.net">Dries Buytaert</a>.</p>
+            </div>
+        </div> <!-- end row -->
+    </div> <!-- end container -->
+</footer>
 
 </body>
 </html>

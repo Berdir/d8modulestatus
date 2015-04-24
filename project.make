@@ -14,7 +14,6 @@ projects[drupal][version] = 8.0.x-dev
 ; Drupal.org projects
 projects[captcha][version] = "1.x-dev"
 projects[collect][version] = "1.x-dev"
-projects[commerce][version] = "2.x-dev"
 projects[composer_manager][version] = "1.x-dev"
 projects[contact_storage][version] = "1.x-dev"
 projects[currency][version] = "3.x-dev"
@@ -67,6 +66,11 @@ projects[block_class][type] = "module"
 projects[block_class][download][type] = "git"
 projects[block_class][download][branch] = "8.0.x-1.x"
 projects[block_class][download][url] = "http://git.drupal.org/sandbox/YaronTal/2345855.git"
+
+projects[commerce][type] = "module"
+projects[commerce][download][type] = "git"
+projects[commerce][download][branch] = "8.x-2.x"
+projects[commerce][download][url] = "https://github.com/commerceguys/commerce.git"
 
 projects[crm_core][type] = "module"
 projects[crm_core][download][type] = "git"
