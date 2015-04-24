@@ -43,6 +43,9 @@ if (is_dir('www-old')) {
   $projects_old = parse_results('www-old');
 }
 
+$diff_counter = 0;
+$all_counter = 0;
+
 foreach ($projects as $name => &$project) {
   if (!isset($projects_old[$name])) {
     $project['new'] = TRUE;
@@ -51,6 +54,9 @@ foreach ($projects as $name => &$project) {
 
   $project['url'] = get_project_url($name, $config['projects']);
 
+  $all_counter++;
+  $project['all_counter'] = $all_counter;
+
   foreach (['phpunit', 'simpletest'] as $framework) {
     if (!isset($project[$framework])) {
       continue;
@@ -58,6 +64,10 @@ foreach ($projects as $name => &$project) {
     foreach ($project[$framework] as $type => $count) {
       if (isset($projects_old[$name][$framework][$type])) {
         $project[$framework][$type . '_diff'] = $count - $projects_old[$name][$framework][$type];
+        if ($project[$framework][$type . '_diff'] != 0) {
+          $project[$framework]['different'] = 'different';
+          $diff_counter++;
+        }
       }
     }
   }
@@ -77,7 +87,7 @@ file_put_contents('www/projects.json', json_encode($projects, JSON_PRETTY_PRINT)
 function parse_results($path) {
   $projects = array();
   foreach (new DirectoryIterator($path) as $file_info) {
-    if ($file_info->isDir() && !$file_info->isDot()) {
+    if ($file_info->isDir() && !$file_info->isDot() && $file_info->getFilename() != 'assets') {
       $project = [
         'name' => $file_info->getFilename(),
         'phpunit' => [],
