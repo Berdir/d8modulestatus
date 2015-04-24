@@ -234,62 +234,59 @@
                         </table>
                     </div>
                     <div class="span3">
-                        <div class="feature-icon">
-                            <i class="icon-flag"></i>
-                        </div>
-                        <div class="feature-text">
-                            <h4>Statistics</h4>
-                            <p>All modules: <span id="all_modules"></span></p>
-                            <p>Passing: <span id="passed_modules"></span></p>
-                            <p>Failing: <span id="failed_modules"></span></p>
-                            <p>Changed: <span id="changed_modules"></span></p>
-                            <p>Last updated: <span>{{ timestamp }}</span></p>
+                        <div class="icon_text">
+                            <div class="feature-icon">
+                                <i class="icon-info-sign"></i>
+                            </div>
+                            <div class="feature-text">
+                                <h4>Statistics</h4>
+                                <p>All modules: <span id="all_modules"></span></p>
+                                <p>Passing: <span id="passed_modules"></span></p>
+                                <p>Failing: <span id="failed_modules"></span></p>
+                                <p>Changed: <span id="changed_modules"></span></p>
+                                <p>Last updated: <span>{{ timestamp }}</span></p>
+                            </div>
                         </div>
 
-                        <div class="feature-icon">
-                            <i class="icon-file-alt"></i>
+                        <div class="icon_text">
+                            <div class="feature-icon">
+                                <i class="icon-file-alt"></i>
+                            </div>
+                            <div class="feature-text">
+                                <h4>Raw data</h4>
+                                <p>Build log: <a href="build.log" target="_blank">build.log</a></p>
+                                <p class="json">JSON:
+                                    <form action="assets/contact.php" method="post">
+                                        <a href="projects.json" target="_blank">projects.json</a>
+                                    </form>
+                                </p>
+                            </div>
                         </div>
-                        <div class="feature-text">
-                            <h4>Raw data</h4>
-                            <p>Build log: <a href="build.log" target="_blank">build.log</a></p>
-                            <p class="json">JSON:
-                                <form action="assets/contact.php" method="post">
-                                    <a href="projects.json" target="_blank">projects.json</a>
-                                </form>
-                            </p>
+
+                        <div class="icon_text">
+                        <div class="feature-icon">
+                            <i class="icon-question-sign"></i>
+                        </div>
+                            <div class="feature-text">
+                                <h4>What do those numbers tell me?</h4>
+                                <p>They give an idea if a module is working, or if recent or not so recent changes in Drupal core broke their tests.</p>
+                                <p>Passing tests does not mean that a module works (Some modules are being developed and incomplete), failing tests do not mean that a module does not, but it is an indicator that something is wrong. Especially if the tests used to pass.</p>
+                                <p>If a module has no tests, then we simply don't know. Go and write some! </p>
+                            </div>
+                        </div>
+                        <div class="clear"></div>
+
+                        <div class="icon_text">
+                            <div class="feature-icon">
+                                <i class="icon-bell"></i>
+                            </div>
+                            <div class="feature-text">
+                                <h4>Module xy is missing?</h4>
+                                <p>Create a pull requests that adds it to projekt.make and I'll include it.</p>
+                            </div>
                         </div>
                     </div>
                 </div>
-            </div>
-        </div>
-    </div> <!-- end row -->
-
-    <div class="row">
-        <div class="span12">
-            <!-- gallery -->
-            <div class="gallery_2">
-                <h3>FAQ</h3>
-                <h5>What do those numbers tell me?</h5>
-                <p>They give an idea if a module is working, or if recent or not so recent changes in Drupal core broke their tests.</p>
-                <p>Passing tests does not mean that a module works (Some modules are being developed and incomplete), failing tests do not mean that a module does not, but it is an indicator that something is wrong. Especially if the tests used to pass.</p>
-                <p>If a module has no tests, then we simply don't know. Go and write some! </p>
-                <h5>Module xy is missing?</h5>
-                <p>Create a pull requests that adds it to projekt.make and I'll include it.</p>
-            </div>
-        </div>
-    </div> <!-- end row -->
-
-    <div class="row">
-        <div class="span12">
-            <!-- about us -->
-            <div class="about-us_2">
-                <h3>About Us</h3>
-                <h5>Moderne Webkommunikation mit Drupal</h5>
-                <p>Sparen Sie IT-Kosten und nutzen Sie dieselbe Technik wie US-Präsident Barack Obama.</p>
-                <p>Die amerikanische Regierung und viele andere grosse Organisationen und Unternehmen nutzen für ihren Internetauftritt das mehrfach ausgezeichnete Content Management System Drupal.</p>
-                <p>Diese zukunftsweisende Kommunikationsplattform ist keineswegs nur Grossunternehmen vorbehalten. Im Gegenteil, der einfache und intuitive Aufbau und die niedrigen Kosten machen es zu einer idealen Lösung für KMU´s.</p>
-                <p>Drupal ist ein Baukasten System, das sich individuell an Ihre Bedürfnisse anpassen lässt. Es eignet sich für eine einfache, innerhalb eines Tages eingerichtete, Projektseite bis hin zur komplexen und interaktiven Multimedia-Plattform.</p>
-                <p>Einmal eingerichtet, können Sie ihre Website problemlos selber verwalten und bezahlen keinerlei Lizenzgebühren, denn Drupal ist Open Source.</p>
             </div>
         </div>
     </div> <!-- end row -->
@@ -302,7 +299,7 @@
     <div class="container">
         <div class="row">
             <div class="span12 copyright">
-                <p>Maintained by <a href="http://drupal.org/user/214652" target="_blank">@berdir</a>.</p>
+                <p>Maintained by <a href="http://www.md-systems.ch/" target="_blank">MD Systems</a>.</p>
             </div>
         </div> <!-- end row -->
         <div class="row">

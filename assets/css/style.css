@@ -600,6 +600,10 @@ footer a:hover { color: #aaa; }
     border-bottom: none;
 }
 
+.clear {
+    clear: both;
+}
+
 /***** Media Queries *****/
 
 @media (min-width: 980px) and (max-width: 1200px) {

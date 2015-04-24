@@ -5056,11 +5056,10 @@ button.close {
     width: 228px;
   }
   .span3 {
-    width: 476px;
+    width: 100%;
       clear: both;
       margin-left: 70px;
       margin-top: 50px;
-
   }
   .span2 {
     width: 104px;
