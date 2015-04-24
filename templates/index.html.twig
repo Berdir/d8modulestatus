@@ -55,26 +55,15 @@
                 $('select option').remove();
             });
 
-            $("#search").on("keyup", function() {
-                var value = $(this).val();
+            $("#search").keyup(function() {
+                var value = this.value;
 
-                $("table tr").each(function(index) {
-                    if (index != 0) {
-
-                        $row = $(this);
-
-                        var id = $row.find("td:first").text();
-
-                        if (id.indexOf(value) != 0) {
-                            $(this).hide();
-                        }
-                        else {
-                            $(this).show();
-                        }
-                    }
+                $("table").find("tr").each(function(index) {
+                    if (!index) return;
+                    var id = $(this).find("td").first().text();
+                    $(this).toggle(id.indexOf(value) !== -1);
                 });
             });
-
 
         });
     </script>
@@ -110,7 +99,7 @@
                         <div class="span7 product-title">
                             <h1>What is this?</h1>
                             <div class="product-description">
-                                <p>This is a daily script that runs the tests of all the mentioned projects above and displays a summary, including changes to the previous day.</p>
+                                <p>This is a daily script that runs the tests of all the mentioned projects below and displays a summary, including changes to the previous day.</p>
                                 <p>More features are planned (like drupal.org issue queue statistics), if you have an idea or want to help, click on fork.</p>
                             </div>
                         </div>
@@ -159,6 +148,7 @@
                                 {% if project.phpunit.assertions %}
                                     <td class="phpunit {{ project.phpunit.failures or project.phpunit.errors ? 'fails' : 'pass' }}">
                                         <img src="assets/img/{% if project.phpunit.failures > 0 or project.phpunit.errors > 0 %}cross.png{% else %}check.png{% endif %}" class="table-icon" alt="check"/>
+                                        <div class="data">
                                         {{ project.phpunit.assertions }}
                                         {% if project.phpunit.assertions_diff %}
                                             {% if project.phpunit.assertions_diff > 0 %}
@@ -186,8 +176,8 @@
                                             {% else %}
                                                 <span class="less">( {{ project.phpunit.errors_diff }} )</span>
                                             {% endif %}
-
                                         {% endif %}
+                                        </div>
                                     </td>
                                 {% else %}
                                     <td class="phpunit unknown">-</td>
@@ -195,6 +185,7 @@
                                 {% if project.simpletest.assertions %}
                                     <td class="simpletest {{ project.simpletest.failures or project.simpletest.errors ? 'fails' : 'pass' }}">
                                         <img src="assets/img/{% if project.simpletest.failures > 0 or project.simpletest.errors > 0 %}cross.png{% else %}check.png{% endif %}" class="table-icon" alt="check"/>
+                                        <div class="data">
                                         {{ project.simpletest.assertions }}
                                         {% if project.simpletest.assertions_diff %}
                                             {% if project.simpletest.assertions_diff > 0 %}
@@ -222,8 +213,8 @@
                                             {% else %}
                                                 <span class="less">( {{ project.simpletest.errors_diff }} )</span>
                                             {% endif %}
-
                                         {% endif %}
+                                        </div>
                                     </td>
                                 {% else %}
                                     <td class="simpletest unknown">-</td>
@@ -270,11 +261,29 @@
                             <div class="feature-text">
                                 <h4>What do those numbers tell me?</h4>
                                 <p>They give an idea if a module is working, or if recent or not so recent changes in Drupal core broke their tests.</p>
-                                <p>Passing tests does not mean that a module works (Some modules are being developed and incomplete), failing tests do not mean that a module does not, but it is an indicator that something is wrong. Especially if the tests used to pass.</p>
-                                <p>If a module has no tests, then we simply don't know. Go and write some! </p>
                             </div>
                         </div>
                         <div class="clear"></div>
+
+                        <div class="icon_text">
+                            <div class="feature-icon">
+                                <i class="icon-lightbulb"></i>
+                            </div>
+                            <div class="feature-text">
+                                <h4>Note</h4>
+                                <p>Passing tests does not mean that a module works (some modules are being developed and incomplete). Failing tests do not mean that a module does not, but it is an indicator that something is wrong. Especially if the tests used to pass.</p>
+                            </div>
+                        </div>
+
+                        <div class="icon_text">
+                            <div class="feature-icon">
+                                <i class="icon-exclamation-sign"></i>
+                            </div>
+                            <div class="feature-text">
+                                <h4>No tests?</h4>
+                                <p>If a module has no tests, then we simply don't know. Go and write some! </p>
+                            </div>
+                        </div>
 
                         <div class="icon_text">
                             <div class="feature-icon">

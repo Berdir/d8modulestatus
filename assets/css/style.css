@@ -40,6 +40,15 @@ body {
     font-weight: bold;
 }
 
+.data {
+    float: left;
+    margin-left: 15px;
+}
+
+.filter-table .quick { margin-left: 0.5em; font-size: 0.8em; text-decoration: none; }
+.fitler-table .quick:hover { text-decoration: underline; }
+td.alt { background-color: #ffc; background-color: rgba(255, 255, 0, 0.2); }
+
 strong { font-weight: 700; }
 a:hover { text-decoration: none; }
 
@@ -176,14 +185,14 @@ a:hover { text-decoration: none; }
     border-radius: 5px;
     border: 1px solid #73a3a1;
     -moz-box-shadow:
-        0 25px 35px 0 rgba(255,255,255,.15) inset,
-        0 1px 5px 0 rgba(0,0,0,.2);
+    0 25px 35px 0 rgba(255,255,255,.15) inset,
+    0 1px 5px 0 rgba(0,0,0,.2);
     -webkit-box-shadow:
-        0 25px 35px 0 rgba(255,255,255,.15) inset,
-        0 1px 5px 0 rgba(0,0,0,.2);
+    0 25px 35px 0 rgba(255,255,255,.15) inset,
+    0 1px 5px 0 rgba(0,0,0,.2);
     box-shadow:
-        0 25px 35px 0 rgba(255,255,255,.15) inset,
-        0 1px 5px 0 rgba(0,0,0,.2);
+    0 25px 35px 0 rgba(255,255,255,.15) inset,
+    0 1px 5px 0 rgba(0,0,0,.2);
     color: #fff;
     text-transform: uppercase;
     text-shadow: 1px 1px 1px rgba(0,0,0,.3);
@@ -199,26 +208,26 @@ a:hover { text-decoration: none; }
 .product-title div.product-description form button:hover {
     color: #fff;
     -moz-box-shadow:
-        0 15px 30px 0 rgba(255,255,255,.1) inset,
-        0 1px 5px 0 rgba(0,0,0,.2);
+    0 15px 30px 0 rgba(255,255,255,.1) inset,
+    0 1px 5px 0 rgba(0,0,0,.2);
     -webkit-box-shadow:
-        0 15px 30px 0 rgba(255,255,255,.1) inset,
-        0 1px 5px 0 rgba(0,0,0,.2);
+    0 15px 30px 0 rgba(255,255,255,.1) inset,
+    0 1px 5px 0 rgba(0,0,0,.2);
     box-shadow:
-        0 15px 30px 0 rgba(255,255,255,.1) inset,
-        0 1px 5px 0 rgba(0,0,0,.2);
+    0 15px 30px 0 rgba(255,255,255,.1) inset,
+    0 1px 5px 0 rgba(0,0,0,.2);
 }
 
 .product-title div.product-description form button:active {
     -moz-box-shadow:
-        0 5px 8px 0 rgba(0,0,0,.1) inset,
-        0 1px 4px 0 rgba(0,0,0,.1);
+    0 5px 8px 0 rgba(0,0,0,.1) inset,
+    0 1px 4px 0 rgba(0,0,0,.1);
     -webkit-box-shadow:
-        0 5px 8px 0 rgba(0,0,0,.1) inset,
-        0 1px 4px 0 rgba(0,0,0,.1);
-    box-shadow:        
-        0 5px 8px 0 rgba(0,0,0,.1) inset,
-        0 1px 4px 0 rgba(0,0,0,.1);
+    0 5px 8px 0 rgba(0,0,0,.1) inset,
+    0 1px 4px 0 rgba(0,0,0,.1);
+    box-shadow:
+    0 5px 8px 0 rgba(0,0,0,.1) inset,
+    0 1px 4px 0 rgba(0,0,0,.1);
     border: 0;
 }
 
@@ -545,7 +554,6 @@ footer a:hover { color: #aaa; }
 {
     text-align: center;
     font: normal 12px Verdana, Arial, Helvetica;
-    width: 150px;
 }
 
 .features-table tbody td:first-child
@@ -603,6 +611,7 @@ footer a:hover { color: #aaa; }
 .clear {
     clear: both;
 }
+
 
 /***** Media Queries *****/
 
@@ -751,5 +760,4 @@ footer a:hover { color: #aaa; }
 @media (max-width: 480px) {
 
 }
-
 
