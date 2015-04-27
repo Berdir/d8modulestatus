@@ -133,10 +133,10 @@ projects[payment_datatrans][download][type] = "git"
 projects[payment_datatrans][download][branch] = master
 projects[payment_datatrans][download][url] = "https://github.com/md-systems/datatrans.git"
 
-projects[payment_postfinanance][type] = "module"
-projects[payment_postfinanance][download][type] = "git"
-projects[payment_postfinanance][download][branch] = master
-projects[payment_postfinanance][download][url] = "https://github.com/md-systems/postfinance.git"
+projects[payment_postfinance][type] = "module"
+projects[payment_postfinance][download][type] = "git"
+projects[payment_postfinance][download][branch] = master
+projects[payment_postfinance][download][url] = "https://github.com/md-systems/postfinance.git"
 
 projects[payment_saferpay][type] = "module"
 projects[payment_saferpay][download][type] = "git"
