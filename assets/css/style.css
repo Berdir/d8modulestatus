@@ -746,8 +746,8 @@ footer a:hover { color: #aaa; }
     .table-responsive{width:auto; overflow-x: scroll; overflow-y:hidden; }
 
     .table-margin {
-        margin-left: 20px;
-        margin-right: 20px;
+        margin-left: 10px;
+        margin-right: 10px;
     }
 
     .table_row td a {
@@ -757,11 +757,29 @@ footer a:hover { color: #aaa; }
 
     .data {
         font-size: 12px;
+        margin-left: 0px;
     }
 
     .features-table td {
         padding: 0 10px;
         text-align: left;
+    }
+
+    .features-table tbody td:first-child {
+        max-width: 70px;
+        overflow: hidden;
+    }
+
+    .table-icon {
+        display: none;
+    }
+
+    .pass {
+        color: #339900;
+    }
+
+    .fails {
+        color: #D00000;
     }
 
 }
