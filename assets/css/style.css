@@ -41,8 +41,8 @@ body {
 }
 
 .data {
-    float: left;
     margin-left: 15px;
+    vertical-align: middle;
 }
 
 .filter-table .quick { margin-left: 0.5em; font-size: 0.8em; text-decoration: none; }
@@ -517,6 +517,7 @@ footer a:hover { color: #aaa; }
     float: left;
     width: 16px;
     height: 16px;
+    margin-right: 10px;
 }
 
 .table_row td a {
@@ -552,7 +553,7 @@ footer a:hover { color: #aaa; }
 /*Body*/
 .features-table tbody td
 {
-    text-align: center;
+    text-align: left;
     font: normal 12px Verdana, Arial, Helvetica;
 }
 
@@ -703,7 +704,7 @@ footer a:hover { color: #aaa; }
 
     .features_2 .feature-icon i { width: 30px; font-size: 30px; }
 
-    .features_2 .feature-text { float: none; width: auto; margin-left: 50px; margin-right: 50px; }
+    .features_2 .feature-text { float: none; width: auto; margin-left: 20px; margin-right: 20px; }
 
     .features_2 .feature-text h4 { line-height: 36px; }
 
@@ -745,8 +746,40 @@ footer a:hover { color: #aaa; }
     .table-responsive{width:auto; overflow-x: scroll; overflow-y:hidden; }
 
     .table-margin {
-        margin-left: 50px;
-        margin-right: 50px;
+        margin-left: 10px;
+        margin-right: 10px;
+    }
+
+    .table_row td a {
+        font-size: 12px;
+        max-width: 50px;
+    }
+
+    .data {
+        font-size: 12px;
+        margin-left: 0px;
+    }
+
+    .features-table td {
+        padding: 0 10px;
+        text-align: left;
+    }
+
+    .features-table tbody td:first-child {
+        max-width: 70px;
+        overflow: hidden;
+    }
+
+    .table-icon {
+        display: none;
+    }
+
+    .pass {
+        color: #339900;
+    }
+
+    .fails {
+        color: #D00000;
     }
 
 }

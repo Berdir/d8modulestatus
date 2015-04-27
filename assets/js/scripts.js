@@ -7,5 +7,3 @@ jQuery(document).ready(function() {
     $('.product-showcase').backstretch('assets/img/backgrounds/drupal_cutted.png');
 
 });
-
-
