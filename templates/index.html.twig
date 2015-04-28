@@ -135,174 +135,130 @@
                             <thead>
                             <tr>
                                 <td>Project</td>
-                                <td>PHPUnit</td>
-                                <td>Simpletest</td>
+                                <td colspan="4">PHPUnit</td>
+                                <td colspan="4">Simpletest</td>
                             </tr>
                             </thead>
                             <tbody>
                             {% for project in projects %}
-                            <tr class="table_row {% if project.phpunit.failures > 0 or project.phpunit.errors > 0 or project.simpletest.failures > 0 or project.simpletest.errors > 0 %}failed{% else %}passed{% endif %}
-                             {% if project.phpunit.different == 'different' or project.simpletest.different == 'different' %} changed{% else %} not-changed{% endif %}">
-                            {#{{ project.phpunit.different or project.phpunit.different ? ' changed' : ' not-changed'}}">#}
-                                <td><a href="{{ project.url }}">{{ project.name }}</a></td>
-                                {% if project.phpunit.assertions %}
-                                    <td class="phpunit {{ project.phpunit.failures or project.phpunit.errors ? 'fails' : 'pass' }}">
-                                        <img src="assets/img/{% if project.phpunit.failures > 0 or project.phpunit.errors > 0 %}cross.png{% else %}check.png{% endif %}" class="table-icon" alt="check"/>
-                                        <div class="data">
-                                            <div class="first_line">
-                                                <div class="cell">
-                                                    {{ project.phpunit.assertions }}
-                                                </div>
-                                                <span class="slash">
-                                                    &nbsp;/&nbsp;
-                                                </span>
-                                                <div class="cell">
-                                                    {{ project.phpunit.failures }}
-                                                </div>
-                                                 <span class="slash">
-                                                    &nbsp;/&nbsp;
-                                                </span>
-                                                <div class="cell">
-                                                    {{ project.phpunit.errors }}
-                                                </div>
-                                            </div>
-                                            {% if project.phpunit.assertions_diff or project.phpunit.assertions_diff or project.phpunit.errors_diff %}
-                                                <div class="clear"></div>
-                                                <div class="second_line">
-                                                    {% if project.phpunit.assertions_diff %}
-                                                        <div class="cell">
-                                                        {% if project.phpunit.assertions_diff > 0 %}
-                                                            <span class="more">( +{{ project.phpunit.assertions_diff }} )</span>
-                                                        {% else %}
-                                                            <span class="less">( {{ project.phpunit.assertions_diff }} )</span>
-                                                        {% endif %}
-                                                        </div>
-                                                    {% else %}
-                                                        <span class="slash">
-                                                        &nbsp;/&nbsp;
-                                                        </span>
-                                                        <span class="zero">0</span>
-                                                    {% endif %}
-                                                    {% if project.phpunit.assertions_diff %}
-                                                        <span class="slash">
-                                                        &nbsp;/&nbsp;
-                                                        </span>
-                                                        <div class="cell">
-                                                        {% if project.phpunit.failures_diff > 0 %}
-                                                            <span class="more">( +{{ project.phpunit.failures_diff }} )</span>
-                                                        {% else %}
-                                                            <span class="less">( {{ project.phpunit.failures_diff }} )</span>
-                                                        {% endif %}
-                                                        </div>
-                                                    {% else %}
-                                                        <span class="slash">
-                                                        &nbsp;/&nbsp;
-                                                        </span>
-                                                        <span class="zero">0</span>
-                                                    {% endif %}
-                                                    {% if project.phpunit.errors_diff %}
-                                                        <span class="slash">
-                                                        &nbsp;/&nbsp;
-                                                        </span>
-                                                        <div class="cell">
-                                                        {% if project.phpunit.errors_diff > 0 %}
-                                                            <span class="more">( +{{ project.phpunit.errors_diff }} )</span>
-                                                        {% else %}
-                                                            <span class="less">( {{ project.phpunit.errors_diff }} )</span>
-                                                        {% endif %}
-                                                        </div>
-                                                    {% else %}
-                                                        <span class="slash">
-                                                        &nbsp;/&nbsp;
-                                                        </span>
-                                                        <span class="zero">0</span>
-                                                    {% endif %}
-                                                </div>
-                                            {% endif %}
-                                        </div>
-                                    </td>
-                                {% else %}
-                                    <td class="phpunit unknown">-</td>
-                                {% endif %}
-                                {% if project.simpletest.assertions %}
-                                    <td class="simpletest {{ project.simpletest.failures or project.simpletest.errors ? 'fails' : 'pass' }}">
-                                        <div class="icon_wrapper">
+                                <tr class="table_row {% if project.phpunit.failures > 0 or project.phpunit.errors > 0 or project.simpletest.failures > 0 or project.simpletest.errors > 0 %}failed{% else %}passed{% endif %}
+                                {% if project.phpunit.different == 'different' or project.simpletest.different == 'different' %} changed{% else %} not-changed{% endif %}">
+                                    {#{{ project.phpunit.different or project.phpunit.different ? ' changed' : ' not-changed'}}">#}
+                                    <td><a href="{{ project.url }}">{{ project.name }}</a></td>
+                                    {% if project.phpunit.assertions %}
+                                        <td class="phpunit {{ project.phpunit.failures or project.phpunit.errors ? 'fails' : 'pass' }} no_border icon_wrapper">
+                                            <img src="assets/img/{% if project.phpunit.failures > 0 or project.phpunit.errors > 0 %}cross.png{% else %}check.png{% endif %}" class="table-icon" alt="check"/>
+                                        </td>
+                                        <td class="no_border {{ project.simpletest.failures or project.simpletest.errors ? 'fails' : 'pass' }}">
+                                            {{ project.phpunit.assertions }}
+                                        </td>
+                                        <td class="no_border {{ project.simpletest.failures or project.simpletest.errors ? 'fails' : 'pass' }}">
+                                            {{ project.phpunit.failures }}
+                                        </td>
+                                        <td class="last_zero {{ project.simpletest.failures or project.simpletest.errors ? 'fails' : 'pass' }}">
+                                            {{ project.phpunit.errors }}
+                                        </td>
+                                    {% else %}
+                                        <td class="phpunit unknown" colspan="4">-</td>
+                                    {% endif %}
+                                    {% if project.simpletest.assertions %}
+                                        <td class="simpletest {{ project.simpletest.failures or project.simpletest.errors ? 'fails' : 'pass' }} no_border icon_wrapper">
                                             <img src="assets/img/{% if project.simpletest.failures > 0 or project.simpletest.errors > 0 %}cross.png{% else %}check.png{% endif %}" class="table-icon" alt="check"/>
-                                        </div>
-                                        <div class="data">
-                                            <div class="first_line">
-                                                <div class="cell">
-                                                {{ project.simpletest.assertions }}
-                                                </div>
-                                                <span class="slash">
-                                                    &nbsp;/&nbsp;
-                                                </span>
-                                                <div class="cell">
-                                                {{ project.simpletest.failures }}
-                                                </div>
-                                                 <span class="slash">
-                                                    &nbsp;/&nbsp;
-                                                </span>
-                                                <div class="cell">
-                                                {{ project.simpletest.errors }}
-                                                </div>
-                                            </div>
-                                            {% if project.simpletest.assertions_diff or project.simpletest.assertions_diff or project.simpletest.errors_diff %}
-                                                <div class="clear"></div>
-                                                <div class="second_line">
-                                                {% if project.simpletest.assertions_diff %}
-                                                    <div class="cell">
+                                        </td>
+                                        <td class="no_border {{ project.simpletest.failures or project.simpletest.errors ? 'fails' : 'pass' }}">
+                                            {{ project.simpletest.assertions }}
+                                        </td>
+                                        <td class="no_border {{ project.simpletest.failures or project.simpletest.errors ? 'fails' : 'pass' }}">
+                                            {{ project.simpletest.failures }}
+                                        </td>
+                                        <td class="no_border {{ project.simpletest.failures or project.simpletest.errors ? 'fails' : 'pass' }}">
+                                            {{ project.simpletest.errors }}
+                                        </td>
+                                    {% else %}
+                                        <td class="simpletest unknown no_border" colspan="4">-</td>
+                                    {% endif %}
+                                </tr>
+                                {% if project.simpletest.different == 'different' or project.phpunit.different == 'different' %}
+                                    <tr class="table_row changes_row">
+                                        <td class="empty_title"></td>
+                                        {% if project.phpunit.assertions %}
+                                            <td class="empty_icon"></td>
+                                            {% if project.phpunit.assertions_diff %}
+                                                <td class="no_border">
+                                                    {% if project.phpunit.assertions_diff > 0 %}
+                                                        <span class="more">( +{{ project.phpunit.assertions_diff }} )</span>
+                                                    {% else %}
+                                                        <span class="less">( {{ project.phpunit.assertions_diff }} )</span>
+                                                    {% endif %}
+                                                </td>
+                                            {% else %}
+                                                <td class="zero no_border">0</td>
+                                            {% endif %}
+                                            {% if project.phpunit.failures_diff %}
+                                                <td class="no_border">
+                                                    {% if project.phpunit.failures_diff > 0 %}
+                                                        <span class="more">( +{{ project.phpunit.failures_diff }} )</span>
+                                                    {% else %}
+                                                        <span class="less">( {{ project.phpunit.failures_diff }} )</span>
+                                                    {% endif %}
+                                                </td>
+                                            {% else %}
+                                                <td class="zero no_border">0</td>
+                                            {% endif %}
+                                            {% if project.phpunit.errors_diff %}
+                                                <td class="no_border">
+                                                    {% if project.phpunit.errors_diff > 0 %}
+                                                        <span class="more">( +{{ project.phpunit.errors_diff }} )</span>
+                                                    {% else %}
+                                                        <span class="less">( {{ project.phpunit.errors_diff }} )</span>
+                                                    {% endif %}
+                                                </td>
+                                            {% else %}
+                                                <td class="zero last_zero">0</td>
+                                            {% endif %}
+                                        {% else %}
+                                            <td class="phpunit unknown" colspan="4">-</td>
+                                        {% endif %}
+                                        {% if project.simpletest.assertions %}
+                                            <td class="empty_icon"></td>
+                                            {% if project.simpletest.assertions_diff %}
+                                                <td class="no_border">
                                                     {% if project.simpletest.assertions_diff > 0 %}
                                                         <span class="more">+{{ project.simpletest.assertions_diff }}</span>
                                                     {% elseif project.simpletest.assertions_diff < 0 %}
                                                         <span class="less">{{ project.simpletest.assertions_diff }}</span>
                                                     {% endif %}
-                                                    </div>
-                                                {% else %}
-                                                    <span class="zero">0</span>
-                                                {% endif %}
-                                                {% if project.simpletest.failures_diff %}
-                                                    <span class="slash">
-                                                        &nbsp;/&nbsp;
-                                                    </span>
-                                                    <div class="cell">
+                                                </td>
+                                            {% else %}
+                                                <td class="zero no_border">0</td>
+                                            {% endif %}
+                                            {% if project.simpletest.failures_diff %}
+                                                <td class="no_border">
                                                     {% if project.simpletest.failures_diff > 0 %}
                                                         <span class="more">+{{ project.simpletest.failures_diff }}</span>
                                                     {% elseif project.simpletest.failures_diff < 0 %}
                                                         <span class="less">{{ project.simpletest.failures_diff }}</span>
                                                     {% endif %}
-                                                    </div>
-                                                {% else %}
-                                                    <span class="slash">
-                                                        &nbsp;/&nbsp;
-                                                    </span>
-                                                    <span class="zero">0</span>
-                                                {% endif %}
-                                                {% if project.simpletest.errors_diff %}
-                                                    <span class="slash">
-                                                        &nbsp;/&nbsp;
-                                                    </span>
-                                                    <div class="cell">
+                                                </td>
+                                            {% else %}
+                                                <td class="zero no_border">0</td>
+                                            {% endif %}
+                                            {% if project.simpletest.errors_diff %}
+                                                <td class="no_border">
                                                     {% if project.simpletest.errors_diff > 0 %}
                                                         <span class="more">+{{ project.simpletest.errors_diff }}</span>
                                                     {% elseif project.simpletest.errors_diff < 0  %}
                                                         <span class="less">{{ project.simpletest.errors_diff }}</span>
                                                     {% endif %}
-                                                    </div>
-                                                {% else %}
-                                                    <span class="slash">
-                                                        &nbsp;/&nbsp;
-                                                    </span>
-                                                    <span class="zero">0</span>
-                                                {% endif %}
-                                                </div>
+                                                </td>
+                                            {% else %}
+                                                <td class="zero no_border">0</td>
                                             {% endif %}
-                                        </div>
-                                    </td>
-                                {% else %}
-                                    <td class="simpletest unknown">-</td>
+                                        {% else %}
+                                            <td class="simpletest unknown" colspan="4">-</td>
+                                        {% endif %}
+                                    </tr>
                                 {% endif %}
-                            </tr>
                             {% endfor %}
                             </tbody>
                         </table>
@@ -330,17 +286,17 @@
                                 <h4>Raw data</h4>
                                 <p>Build log: <a href="build.log" target="_blank">build.log</a></p>
                                 <p class="json">JSON:
-                                    <form action="assets/contact.php" method="post">
-                                        <a href="projects.json" target="_blank">projects.json</a>
-                                    </form>
+                                <form action="assets/contact.php" method="post">
+                                    <a href="projects.json" target="_blank">projects.json</a>
+                                </form>
                                 </p>
                             </div>
                         </div>
 
                         <div class="icon_text">
-                        <div class="feature-icon">
-                            <i class="icon-question-sign"></i>
-                        </div>
+                            <div class="feature-icon">
+                                <i class="icon-question-sign"></i>
+                            </div>
                             <div class="feature-text">
                                 <h4>What do those numbers tell me?</h4>
                                 <p>They give an idea if a module is working, or if recent or not so recent changes in Drupal core broke their tests.</p>
