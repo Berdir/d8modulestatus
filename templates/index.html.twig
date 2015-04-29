@@ -186,9 +186,9 @@
                                             {% if project.phpunit.assertions_diff %}
                                                 <td class="no_border">
                                                     {% if project.phpunit.assertions_diff > 0 %}
-                                                        <span class="more">( +{{ project.phpunit.assertions_diff }} )</span>
+                                                        <span class="more">+{{ project.phpunit.assertions_diff }}</span>
                                                     {% else %}
-                                                        <span class="less">( {{ project.phpunit.assertions_diff }} )</span>
+                                                        <span class="less">{{ project.phpunit.assertions_diff }}</span>
                                                     {% endif %}
                                                 </td>
                                             {% else %}
@@ -197,9 +197,9 @@
                                             {% if project.phpunit.failures_diff %}
                                                 <td class="no_border">
                                                     {% if project.phpunit.failures_diff > 0 %}
-                                                        <span class="more">( +{{ project.phpunit.failures_diff }} )</span>
+                                                        <span class="more">+{{ project.phpunit.failures_diff }}</span>
                                                     {% else %}
-                                                        <span class="less">( {{ project.phpunit.failures_diff }} )</span>
+                                                        <span class="less">{{ project.phpunit.failures_diff }}</span>
                                                     {% endif %}
                                                 </td>
                                             {% else %}
@@ -208,9 +208,9 @@
                                             {% if project.phpunit.errors_diff %}
                                                 <td class="no_border">
                                                     {% if project.phpunit.errors_diff > 0 %}
-                                                        <span class="more">( +{{ project.phpunit.errors_diff }} )</span>
+                                                        <span class="more">+{{ project.phpunit.errors_diff }}</span>
                                                     {% else %}
-                                                        <span class="less">( {{ project.phpunit.errors_diff }} )</span>
+                                                        <span class="less">{{ project.phpunit.errors_diff }}</span>
                                                     {% endif %}
                                                 </td>
                                             {% else %}
