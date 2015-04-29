@@ -539,9 +539,6 @@ footer a:hover { color: #aaa; }
     line-height: 50px;
     padding: 0 18px;
     border-bottom: 1px solid #cdcdcd;
-    box-shadow: 0 1px 0 white;
-    -moz-box-shadow: 0 1px 0 white;
-    -webkit-box-shadow: 0 1px 0 white;
     white-space: nowrap;
     text-align: right;
 }
@@ -640,8 +637,17 @@ thead td {
     display: table-cell;
 }
 
+.no_border_bottom {
+    border-bottom: none !important;
+}
+
 .empty_title {
     border-top: none !important;
+}
+
+.empty_title span {
+    float: right;
+    margin-right: 10px;
 }
 
 .empty_icon {
@@ -847,7 +853,7 @@ thead td {
 
     .features-table td {
         padding: 0 5px;
-        text-align: left;
+        text-align: right;
     }
 
     .features-table tbody td:first-child {
@@ -874,4 +880,3 @@ thead td {
 @media (max-width: 480px) {
 
 }
-

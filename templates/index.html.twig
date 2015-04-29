@@ -144,7 +144,7 @@
                                 <tr class="table_row {% if project.phpunit.failures > 0 or project.phpunit.errors > 0 or project.simpletest.failures > 0 or project.simpletest.errors > 0 %}failed{% else %}passed{% endif %}
                                 {% if project.phpunit.different == 'different' or project.simpletest.different == 'different' %} changed{% else %} not-changed{% endif %}">
                                     {#{{ project.phpunit.different or project.phpunit.different ? ' changed' : ' not-changed'}}">#}
-                                    <td><a href="{{ project.url }}">{{ project.name }}</a></td>
+                                    <td {% if project.simpletest.different == 'different' or project.phpunit.different == 'different' %}class="no_border_bottom"{% endif %} ><a href="{{ project.url }}">{{ project.name }}</a></td>
                                     {% if project.phpunit.assertions %}
                                         <td class="phpunit {{ project.phpunit.failures or project.phpunit.errors ? 'fails' : 'pass' }} no_border icon_wrapper">
                                             <img src="assets/img/{% if project.phpunit.failures > 0 or project.phpunit.errors > 0 %}cross.png{% else %}check.png{% endif %}" class="table-icon" alt="check"/>
@@ -179,8 +179,8 @@
                                     {% endif %}
                                 </tr>
                                 {% if project.simpletest.different == 'different' or project.phpunit.different == 'different' %}
-                                    <tr class="table_row changes_row">
-                                        <td class="empty_title"></td>
+                                    <tr class="table_row changes_row {% if project.phpunit.failures > 0 or project.phpunit.errors > 0 or project.simpletest.failures > 0 or project.simpletest.errors > 0 %}failed{% else %}passed{% endif %}">
+                                        <td class="empty_title"><span title="Changed">&#916;</span></td>
                                         {% if project.phpunit.assertions %}
                                             <td class="empty_icon"></td>
                                             {% if project.phpunit.assertions_diff %}
@@ -274,7 +274,7 @@
                                 <p>Passing: <span id="passed_modules"></span></p>
                                 <p>Failing: <span id="failed_modules"></span></p>
                                 <p>Changed: <span id="changed_modules"></span></p>
-                                <p>Last updated: <span>{{ timestamp }}</span></p>
+                                <p>Last updated: <span style="display: block">{{ timestamp }}</span></p>
                             </div>
                         </div>
 
