@@ -115,13 +115,8 @@ projects[media_pinkeye][download][url] = "https://github.com/drupal-media/media_
 
 projects[metatag][type] = "module"
 projects[metatag][download][type] = "git"
-projects[metatag][download][branch] = 8.x-1.x
-projects[metatag][download][url] = "https://github.com/RoySegall/message.git"
-
-projects[metatag][type] = "module"
-projects[metatag][download][type] = "git"
-projects[metatag][download][branch] = 8.x-1.x
-projects[metatag][download][url] = "http://git.drupal.org/sandbox/valthebald/2339829.git"
+projects[metatag][download][branch] = master
+projects[metatag][download][url] = "https://bitbucket.org/DamienMcKenna/metatag_d8.git"
 
 projects[pathauto][type] = "module"
 projects[pathauto][download][type] = "git"
