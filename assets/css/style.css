@@ -497,6 +497,16 @@ footer a:hover { color: #aaa; }
     text-align: center;
 }
 
+.numbers {
+    min-width: 30px;
+    float: left;
+}
+
+.statistics {
+    line-height: 30px;
+    margin: 0 0 10px;
+}
+
 /*Features table------------------------------------------------------------*/
 .table-margin {
     margin-left: 80px;
