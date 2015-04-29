@@ -167,3 +167,8 @@ projects[ultimate_cron][type] = "module"
 projects[ultimate_cron][download][type] = "git"
 projects[ultimate_cron][download][branch] = 8.x-2.x
 projects[ultimate_cron][download][url] = "https://github.com/md-systems/ultimate_cron.git"
+
+projects[views_custom_cache_tag][type] = "module"
+projects[views_custom_cache_tag][download][type] = "git"
+projects[views_custom_cache_tag][download][branch] = 8.x-1.x
+projects[views_custom_cache_tag][download][url] = "https://github.com/md-systems/views_custom_cache_tag.git"
