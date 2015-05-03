@@ -12,6 +12,7 @@ projects[drupal][version] = 8.0.x-dev
 ;projects[drupal][patch][] = https://www.drupal.org/files/issues/prevent-notices-if-function-is-not-a-method-2417727-3.patch
 
 ; Drupal.org projects
+projects[bideo][version] = "1.x-dev"
 projects[captcha][version] = "1.x-dev"
 projects[collect][version] = "1.x-dev"
 projects[composer_manager][version] = "1.x-dev"
@@ -58,6 +59,11 @@ projects[token][version] = "1.x-dev"
 projects[tmgmt][version] = "1.x-dev"
 projects[tmgmt_google][version] = "1.x-dev"
 projects[tmgmt_microsoft][version] = "1.x-dev"
+projects[views_details][version] = "1.x-dev"
+projects[views_field_view][version] = "1.x-dev"
+projects[views_fieldset][version] = "1.x-dev"
+projects[views_vertical_tabs][version] = "1.x-dev"
+projects[views_details][version] = "1.x-dev"
 ; Commented out, syntax error in tests
 ;projects[xmlsitemap][version] = "1.x-dev"
 projects[wysiwyg_linebreaks][version] = "1.x-dev"
