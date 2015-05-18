@@ -29,12 +29,12 @@
         $(document).ready(function () {
             var numOfAllModules = $('.table_row').length;
             $('#all_modules').text(numOfAllModules);
-            var numOfPassedModules = $('.passed').length;
+            var numOfPassedModules = $('img[alt="check"]').size();
             $('#passed_modules').text(numOfPassedModules);
-            var numOfFailedModules = $('.failed').length;
+            var numOfFailedModules = $("img[alt='cross']").size();
             $('#failed_modules').text(numOfFailedModules);
-            var numOfChaingedModules = $('.changed').length;
-            $('#changed_modules').text(numOfChaingedModules);
+            var numOfChangedModules = $('.changed').length;
+            $('#changed_modules').text(numOfChangedModules);
 
             $('.selectpicker').on('change', function() {
                 if (this.value == 'all') {
@@ -147,7 +147,8 @@
                                     <td {% if project.simpletest.different == 'different' or project.phpunit.different == 'different' %}class="no_border_bottom"{% endif %} ><a href="{{ project.url }}">{{ project.name }}</a></td>
                                     {% if project.phpunit.assertions %}
                                         <td class="phpunit {{ project.phpunit.failures or project.phpunit.errors ? 'fails' : 'pass' }} no_border icon_wrapper">
-                                            <img src="assets/img/{% if project.phpunit.failures > 0 or project.phpunit.errors > 0 %}cross.png{% else %}check.png{% endif %}" class="table-icon" alt="check"/>
+                                            <img src="assets/img/{% if project.phpunit.failures > 0 or project.phpunit.errors > 0 %}cross.png{% else %}check.png{% endif %}" class="table-icon"
+                                                 {% if project.phpunit.failures > 0 or project.phpunit.errors > 0 %}alt="cross"{% else %}alt="check"{% endif %}/>
                                         </td>
                                         <td class="no_border {{ project.simpletest.failures or project.simpletest.errors ? 'fails' : 'pass' }}">
                                             {{ project.phpunit.assertions }}
@@ -163,7 +164,8 @@
                                     {% endif %}
                                     {% if project.simpletest.assertions %}
                                         <td class="simpletest {{ project.simpletest.failures or project.simpletest.errors ? 'fails' : 'pass' }} no_border icon_wrapper">
-                                            <img src="assets/img/{% if project.simpletest.failures > 0 or project.simpletest.errors > 0 %}cross.png{% else %}check.png{% endif %}" class="table-icon" alt="check"/>
+                                            <img src="assets/img/{% if project.simpletest.failures > 0 or project.simpletest.errors > 0 %}cross.png{% else %}check.png{% endif %}" class="table-icon"
+                                                 {% if project.simpletest.failures > 0 or project.simpletest.errors > 0 %}alt="cross"{% else %}alt="check"{% endif %}/>
                                         </td>
                                         <td class="no_border {{ project.simpletest.failures or project.simpletest.errors ? 'fails' : 'pass' }}">
                                             {{ project.simpletest.assertions }}
