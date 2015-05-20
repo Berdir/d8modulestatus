@@ -39,23 +39,22 @@ if (is_dir('www/simpletest')) {
 }
 
 $projects = parse_results('www');
+$total_counter = (count($projects));
+$failed_counter = 0;
+$changed_counter = 0;
+
 if (is_dir('www-old')) {
   $projects_old = parse_results('www-old');
 }
 
-$diff_counter = 0;
-$all_counter = 0;
-
 foreach ($projects as $name => &$project) {
+  $has_changed = FALSE;
   if (!isset($projects_old[$name])) {
     $project['new'] = TRUE;
     continue;
   }
 
   $project['url'] = get_project_url($name, $config['projects']);
-
-  $all_counter++;
-  $project['all_counter'] = $all_counter;
 
   foreach (['phpunit', 'simpletest'] as $framework) {
     if (!isset($project[$framework])) {
@@ -66,16 +65,31 @@ foreach ($projects as $name => &$project) {
         $project[$framework][$type . '_diff'] = $count - $projects_old[$name][$framework][$type];
         if ($project[$framework][$type . '_diff'] != 0) {
           $project[$framework]['different'] = 'different';
-          $diff_counter++;
+          $has_changed = TRUE;
         }
       }
     }
+  }
+
+  if ($project['is_failed'] == TRUE) {
+    $failed_counter++;
+  }
+
+  if ($has_changed) {
+    $changed_counter++;
   }
 }
 
 ksort($projects);
 
-$index = $twig->render('index.html.twig', ['projects' => $projects, 'timestamp' => date('Y-m-d H:i:s T')]);
+$index = $twig->render('index.html.twig',
+  ['projects' => $projects, 'timestamp' => date('Y-m-d H:i:s T'),
+    'total_counter' => $total_counter,
+    'failed_counter' => $failed_counter,
+    'passed_counter' => $total_counter - $failed_counter,
+    'changed_counter' => $changed_counter,
+  ]
+);
 file_put_contents('www/index.html', $index);
 file_put_contents('www/projects.json', json_encode($projects, JSON_PRETTY_PRINT));
 
@@ -92,6 +106,7 @@ function parse_results($path) {
         'name' => $file_info->getFilename(),
         'phpunit' => [],
         'simpletest' => [],
+        'is_failed' => FALSE,
       ];
       $phpunit_file = $file_info->getPathName() . '/phpunit.xml';
       if (file_exists($phpunit_file) && filesize($phpunit_file) > 0) {
@@ -99,8 +114,14 @@ function parse_results($path) {
         $project['phpunit']['assertions'] = (int) $phpunit->testsuite['assertions'];
         $project['phpunit']['failures'] = (int) $phpunit->testsuite['failures'];
         $project['phpunit']['errors'] = (int) $phpunit->testsuite['errrors'];
+        if ($project['phpunit']['failures'] > 0 || $project['phpunit']['errors'] > 0) {
+          $project['is_failed'] = TRUE;
+        }
       }
       $project['simpletest'] = get_simpletest_results($file_info->getPathname());
+      if ($project['simpletest']['failures'] > 0 || $project['simpletest']['errors'] > 0) {
+        $project['is_failed'] = TRUE;
+      }
       $projects[$project['name']] = $project;
     }
   }
