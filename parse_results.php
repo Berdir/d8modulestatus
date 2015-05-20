@@ -69,10 +69,10 @@ foreach ($projects as $name => &$project) {
         }
       }
     }
-    if ($project['is_failed']) {
-      print_r('here ');
-      $failed_counter++;
-    }
+  }
+
+  if ($project['is_failed'] == TRUE) {
+    $failed_counter++;
   }
 
   if ($has_changed) {
@@ -87,7 +87,7 @@ $index = $twig->render('index.html.twig',
     'total_counter' => $total_counter,
     'failed_counter' => $failed_counter,
     'passed_counter' => $total_counter - $failed_counter,
-    'changed_counter' => $changed_counter
+    'changed_counter' => $changed_counter,
   ]
 );
 file_put_contents('www/index.html', $index);
