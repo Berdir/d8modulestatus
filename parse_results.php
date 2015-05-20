@@ -69,10 +69,10 @@ foreach ($projects as $name => &$project) {
         }
       }
     }
-  }
-
-  foreach ($project['is_failed'] as $failed) {
-    $failed_counter++;
+    if ($project['is_failed']) {
+      print_r('here ');
+      $failed_counter++;
+    }
   }
 
   if ($has_changed) {
@@ -106,7 +106,7 @@ function parse_results($path) {
         'name' => $file_info->getFilename(),
         'phpunit' => [],
         'simpletest' => [],
-        'is_failed' => [],
+        'is_failed' => FALSE,
       ];
       $phpunit_file = $file_info->getPathName() . '/phpunit.xml';
       if (file_exists($phpunit_file) && filesize($phpunit_file) > 0) {
@@ -115,12 +115,12 @@ function parse_results($path) {
         $project['phpunit']['failures'] = (int) $phpunit->testsuite['failures'];
         $project['phpunit']['errors'] = (int) $phpunit->testsuite['errrors'];
         if ($project['phpunit']['failures'] > 0 || $project['phpunit']['errors'] > 0) {
-          $project['is_failed']['failed'] = TRUE;
+          $project['is_failed'] = TRUE;
         }
       }
       $project['simpletest'] = get_simpletest_results($file_info->getPathname());
       if ($project['simpletest']['failures'] > 0 || $project['simpletest']['errors'] > 0) {
-        $project['is_failed']['failed'] = TRUE;
+        $project['is_failed'] = TRUE;
       }
       $projects[$project['name']] = $project;
     }
