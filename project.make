@@ -37,6 +37,7 @@ projects[libraries][version] = "3.x-dev"
 projects[login_security][version] = "1.x-dev"
 projects[logouttab][version] = "1.x-dev"
 projects[maillog][version] = "1.x-dev"
+projects[mailsystem][version] = "4.x-dev"
 projects[mailmute][version] = "1.x-dev"
 projects[masquerade][version] = "2.x-dev"
 projects[media_entity][version] = "1.x-dev"
@@ -107,11 +108,6 @@ projects[inline_entity_form][type] = "module"
 projects[inline_entity_form][download][type] = "git"
 projects[inline_entity_form][download][branch] = 8.x-1.x
 projects[inline_entity_form][download][url] = "https://github.com/webflo/inline_entity_form.git"
-
-projects[mailsystem][type] = "module"
-projects[mailsystem][download][type] = "git"
-projects[mailsystem][download][branch] = 8.x-4.x
-projects[mailsystem][download][url] = "https://github.com/LukyLuke/mailsystem"
 
 projects[media_pinkeye][type] = "module"
 projects[media_pinkeye][download][type] = "git"
