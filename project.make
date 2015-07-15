@@ -62,6 +62,7 @@ projects[token][version] = "1.x-dev"
 projects[tmgmt][version] = "1.x-dev"
 projects[tmgmt_google][version] = "1.x-dev"
 projects[tmgmt_microsoft][version] = "1.x-dev"
+projects[tmgmt_mygengo][version] = "1.x-dev"
 ; Commented out, syntax error in tests
 ;projects[xmlsitemap][version] = "1.x-dev"
 projects[views_custom_cache_tag][version] = "1.x-dev"
@@ -158,11 +159,6 @@ projects[swiftmailer][type] = "module"
 projects[swiftmailer][download][type] = "git"
 projects[swiftmailer][download][branch] = 8.x-1.x
 projects[swiftmailer][download][url] = "https://github.com/webflo/drupal-swiftmailer"
-
-projects[tmgmt_mygengo][type] = "module"
-projects[tmgmt_mygengo][download][type] = "git"
-projects[tmgmt_mygengo][download][branch] = 8.x-1.x
-projects[tmgmt_mygengo][download][url] = "https://github.com/das-peter/tmgmt_mygengo.git"
 
 projects[ultimate_cron][type] = "module"
 projects[ultimate_cron][download][type] = "git"
