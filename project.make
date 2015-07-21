@@ -29,6 +29,7 @@ projects[features][version] = "3.x-dev"
 projects[flag][version] = "4.x-dev"
 projects[google_analytics][version] = "2.x-dev"
 projects[honeypot][version] = "1.x-dev"
+projects[inline_entity_form][version] = "1.x-dev"
 projects[inmail][version] = "1.x-dev"
 projects[interval][version] = "1.x-dev"
 projects[jw_player][version] = "1.x-dev"
@@ -104,11 +105,6 @@ projects[globalredirect][type] = "module"
 projects[globalredirect][download][type] = "git"
 projects[globalredirect][download][branch] = 8.x-1.x
 projects[globalredirect][download][url] = "https://github.com/md-systems/globalredirect.git"
-
-projects[inline_entity_form][type] = "module"
-projects[inline_entity_form][download][type] = "git"
-projects[inline_entity_form][download][branch] = 8.x-1.x
-projects[inline_entity_form][download][url] = "https://github.com/webflo/inline_entity_form.git"
 
 projects[media_pinkeye][type] = "module"
 projects[media_pinkeye][download][type] = "git"
