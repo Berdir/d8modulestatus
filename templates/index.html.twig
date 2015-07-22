@@ -141,13 +141,13 @@
                                             <img src="assets/img/{% if project.phpunit.failures > 0 or project.phpunit.errors > 0 %}cross.png{% else %}check.png{% endif %}" class="table-icon"
                                                  {% if project.phpunit.failures > 0 or project.phpunit.errors > 0 %}alt="cross"{% else %}alt="check"{% endif %}/>
                                         </td>
-                                        <td class="no_border {{ project.simpletest.failures or project.simpletest.errors ? 'fails' : 'pass' }}">
+                                        <td class="no_border {{ project.phpunit.failures or project.phpunit.errors ? 'fails' : 'pass' }}">
                                             {{ project.phpunit.assertions }}
                                         </td>
-                                        <td class="no_border {{ project.simpletest.failures or project.simpletest.errors ? 'fails' : 'pass' }}">
+                                        <td class="no_border {{ project.phpunit.failures or project.phpunit.errors ? 'fails' : 'pass' }}">
                                             {{ project.phpunit.failures }}
                                         </td>
-                                        <td class="last_zero {{ project.simpletest.failures or project.simpletest.errors ? 'fails' : 'pass' }}">
+                                        <td class="last_zero {{ project.phpunit.failures or project.phpunit.errors ? 'fails' : 'pass' }}">
                                             {{ project.phpunit.errors }}
                                         </td>
                                     {% else %}
