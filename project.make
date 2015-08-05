@@ -71,6 +71,10 @@ projects[tmgmt_mygengo][version] = "1.x-dev"
 projects[views_custom_cache_tag][version] = "1.x-dev"
 projects[wysiwyg_linebreaks][version] = "1.x-dev"
 
+; Module patches.
+; Adds Collect CRM Core tests.
+projects[collect][patch][] = https://raw.githubusercontent.com/fantastic91/CRM-Core-Collect-tests/master/crm-core-collect-tests.patch
+
 ; Unofficial ports.
 projects[block_class][type] = "module"
 projects[block_class][download][type] = "git"
