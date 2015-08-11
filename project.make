@@ -106,12 +106,6 @@ projects[file_entity][download][type] = "git"
 projects[file_entity][download][branch] = 8.x-2.x
 projects[file_entity][download][url] = "https://github.com/md-systems/file_entity.git"
 
-; @todo switch back to d.o
-projects[globalredirect][type] = "module"
-projects[globalredirect][download][type] = "git"
-projects[globalredirect][download][branch] = 8.x-1.x
-projects[globalredirect][download][url] = "https://github.com/md-systems/globalredirect.git"
-
 projects[media_pinkeye][type] = "module"
 projects[media_pinkeye][download][type] = "git"
 projects[media_pinkeye][download][branch] = 8.x-1.x
