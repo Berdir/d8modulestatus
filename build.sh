@@ -25,7 +25,7 @@ find modules -name composer.json | xargs grep -L name | xargs rm
 
 # Update composer dependencies
 
-php ./modules/composer_manager/scripts/init.sh
+php ./modules/composer_manager/scripts/init.php
 cd core
 /usr/local/bin/composer drupal-update
 cd ..
