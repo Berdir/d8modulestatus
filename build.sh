@@ -26,9 +26,8 @@ find modules -name composer.json | xargs grep -L name | xargs rm
 # Update composer dependencies
 
 php ./modules/composer_manager/scripts/init.php
-cd core
-/usr/local/bin/composer drupal-update
-cd ..
+/usr/local/bin/composer drupal-rebuild
+/usr/local/bin/composer install
 
 # Loop over all projects.
 for FOLDER in `cd modules; ls -d1 */`; do
