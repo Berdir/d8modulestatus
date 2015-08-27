@@ -9,8 +9,6 @@ projects[drupal][type] = core
 projects[drupal][version] = 8.0.x-dev
 
 ;projects[drupal][patch][] = https://www.drupal.org/files/issues/prevent-notices-if-function-is-not-a-method-2417727-3.patch
-; Fix phpunit with a top-level vendor directory
-projects[drupal][patch][] = https://www.drupal.org/files/issues/2554849-15.patch
 
 ; Drupal.org projects
 projects[captcha][version] = "1.x-dev"
