@@ -14,6 +14,7 @@ projects[drupal][version] = 8.0.x-dev
 
 
 ; Drupal.org projects
+projects[address][version] = "1.x-dev"
 projects[captcha][version] = "1.x-dev"
 projects[collect][version] = "1.x-dev"
 projects[composer_manager][version] = "1.x-dev"
