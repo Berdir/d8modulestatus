@@ -40,7 +40,7 @@ for FOLDER in `cd modules; ls -d1 */`; do
 
   # Prepare www folder.
   mkdir -p ../www-new/$PROJECT/simpletest
-  ./core/vendor/bin/phpunit -c core/phpunit.xml.dist --log-junit=../www-new/$PROJECT/phpunit.xml modules/$PROJECT/
+  ./vendor/bin/phpunit -c core/phpunit.xml.dist --log-junit=../www-new/$PROJECT/phpunit.xml modules/$PROJECT/
 done
 
 test_files=`find modules/ -name "*Test*.php" | grep src/Tests | paste -s -d,`
