@@ -9,6 +9,9 @@ projects[drupal][type] = core
 projects[drupal][version] = 8.0.x-dev
 
 ;projects[drupal][patch][] = https://www.drupal.org/files/issues/prevent-notices-if-function-is-not-a-method-2417727-3.patch
+; Smartcache
+;projects[drupal][patch][] = https://www.drupal.org/files/issues/smartcache-2429617-321.patch
+
 
 ; Drupal.org projects
 projects[captcha][version] = "1.x-dev"
