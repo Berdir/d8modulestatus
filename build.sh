@@ -29,6 +29,9 @@ php ./modules/composer_manager/scripts/init.php
 /usr/local/bin/composer drupal-rebuild
 /usr/local/bin/composer install
 
+# @todo Use mysql?
+export SIMPLETEST_DB=sqlite://localhost//tmp/test.sqlite
+
 # Loop over all projects.
 for FOLDER in `cd modules; ls -d1 */`; do
   # Remove trailing / from foldername
