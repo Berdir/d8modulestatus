@@ -80,6 +80,9 @@ projects[wysiwyg_linebreaks][version] = "1.x-dev"
 ; Adds Collect CRM Core tests.
 projects[collect][patch][] = https://raw.githubusercontent.com/fantastic91/CRM-Core-Collect-tests/master/crm-core-collect-tests.patch
 
+; Adds Monitoring payment test.
+projects[monitoring][patch][] = https://www.drupal.org/files/issues/add_payment_test.patch
+
 ; Unofficial ports.
 projects[block_class][type] = "module"
 projects[block_class][download][type] = "git"
