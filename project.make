@@ -63,6 +63,7 @@ projects[relaxed][version] = "1.x-dev"
 projects[rest_api_doc][version] = "1.x-dev"
 projects[rules][version] = "3.x-dev"
 projects[search_api][version] = "1.x-dev"
+projects[search_api_solr][version] = "1.x-dev"
 projects[sharemessage][version] = "1.x-dev"
 projects[simple_mail][version] = "1.x-dev"
 projects[simplenews][version] = "1.x-dev"
@@ -154,11 +155,6 @@ projects[redis][type] = "module"
 projects[redis][download][type] = "git"
 projects[redis][download][branch] = 8.x-1.x
 projects[redis][download][url] = "https://github.com/md-systems/redis.git"
-
-projects[search_api_solr][type] = "module"
-projects[search_api_solr][download][type] = "git"
-projects[search_api_solr][download][branch] = 8.x-1.x
-projects[search_api_solr][download][url] = "https://github.com/amateescu/search_api_solr.git"
 
 projects[swiftmailer][type] = "module"
 projects[swiftmailer][download][type] = "git"
