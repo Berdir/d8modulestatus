@@ -47,6 +47,7 @@ projects[mailsystem][version] = "4.x-dev"
 projects[mailmute][version] = "1.x-dev"
 projects[masquerade][version] = "2.x-dev"
 projects[media_entity][version] = "1.x-dev"
+projects[metatag][version] = "1.x-dev"
 projects[monitoring][version] = "1.x-dev"
 projects[multiversion][version] = "1.x-dev"
 projects[nodeorder][version] = "1.x-dev"
@@ -120,11 +121,6 @@ projects[media_pinkeye][type] = "module"
 projects[media_pinkeye][download][type] = "git"
 projects[media_pinkeye][download][branch] = 8.x-1.x
 projects[media_pinkeye][download][url] = "https://github.com/drupal-media/media_pinkeye"
-
-projects[metatag][type] = "module"
-projects[metatag][download][type] = "git"
-projects[metatag][download][branch] = master
-projects[metatag][download][url] = "https://bitbucket.org/DamienMcKenna/metatag_d8.git"
 
 projects[pathauto][type] = "module"
 projects[pathauto][download][type] = "git"
