@@ -26,8 +26,7 @@ find modules -name composer.json | xargs grep -L name | xargs rm
 # Update composer dependencies
 
 php ./modules/composer_manager/scripts/init.php
-/usr/local/bin/composer drupal-rebuild
-/usr/local/bin/composer install
+/usr/local/bin/composer drupal-update
 
 # @todo Use mysql?
 export SIMPLETEST_DB=sqlite://localhost//tmp/test.sqlite
