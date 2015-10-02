@@ -110,7 +110,7 @@ projects[default_content][download][url] = "https://github.com/larowlan/default_
 projects[fallback_formatter][type] = "module"
 projects[fallback_formatter][download][type] = "git"
 projects[fallback_formatter][download][branch] = 8.x-1.x
-projects[fallback_formatter][download][url] = "https://github.com/md-systems/fallback_formatter.git"
+projects[fallback_formatter][download][url] = "https://github.com/drupal-media/fallback_formatter.git"
 
 projects[file_entity][type] = "module"
 projects[file_entity][download][type] = "git"
