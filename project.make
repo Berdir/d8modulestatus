@@ -77,6 +77,7 @@ projects[tmgmt_mygengo][version] = "1.x-dev"
 ; Commented out, syntax error in tests
 ;projects[xmlsitemap][version] = "1.x-dev"
 projects[views_custom_cache_tag][version] = "1.x-dev"
+projects[votingapi][version] = "3.x-dev"
 projects[wysiwyg_linebreaks][version] = "1.x-dev"
 
 ; Module patches.
