@@ -12,9 +12,9 @@ projects[drupal][version] = 8.0.x-dev
 ; Smartcache
 projects[drupal][patch][] = https://www.drupal.org/files/issues/smartcache-2429617-328.patch
 
-
 ; Drupal.org projects
 projects[address][version] = "1.x-dev"
+projects[allowed_formats][version] = "1.x-dev"
 projects[captcha][version] = "1.x-dev"
 projects[collect][version] = "1.x-dev"
 projects[composer_manager][version] = "1.x-dev"
