@@ -20,8 +20,7 @@ drush si -y --nocolor --db-url=mysql://d8modulestatus:$MYSQLPASS@localhost/d8mod
 drush en -y --nocolor simpletest composer_manager
 
 # Temporary: Delete invalid composer.json files.
-find modules -name composer.json | xargs grep -L name 
-find modules -name composer.json | xargs grep -L name | xargs rm
+rm modules/metatag/composer.json
 
 # Update composer dependencies
 
