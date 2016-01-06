@@ -6,7 +6,7 @@ core = 8.x
 
 ; Drupal core
 projects[drupal][type] = core
-projects[drupal][version] = 8.0.x-dev
+projects[drupal][version] = 8.1.x-dev
 
 ;projects[drupal][patch][] = https://www.drupal.org/files/issues/prevent-notices-if-function-is-not-a-method-2417727-3.patch
 
