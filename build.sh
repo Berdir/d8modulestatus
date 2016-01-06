@@ -28,6 +28,7 @@ php ./modules/composer_manager/scripts/init.php
 /usr/local/bin/composer drupal-update
 
 # @todo Use mysql?
+export SIMPLETEST_BASE_URL=http://d8modulestatus/
 export SIMPLETEST_DB=sqlite://localhost//tmp/test.sqlite
 
 # Loop over all projects.
