@@ -19,6 +19,7 @@ projects[composer_manager][version] = "1.x-dev"
 projects[contact_storage][version] = "1.x-dev"
 projects[ctools][version] = "3.x-dev"
 projects[currency][version] = "3.x-dev"
+projects[default_content][version] = "1.x-dev"
 projects[diff][version] = "1.x-dev"
 projects[ds][version] = "2.x-dev"
 projects[dynamic_entity_reference][version] = "1.x-dev"
@@ -57,6 +58,7 @@ projects[paragraphs][version] = "1.x-dev"
 projects[past][version] = "1.x-dev"
 projects[pathologic][version] = "1.x-dev"
 projects[payment][version] = "2.x-dev"
+projects[payment_datatrans][version] = "1.x-dev"
 projects[plugin][version] = "2.x-dev"
 projects[poll][version] = "1.x-dev"
 projects[relaxed][version] = "1.x-dev"
@@ -65,6 +67,7 @@ projects[rules][version] = "3.x-dev"
 projects[search_api][version] = "1.x-dev"
 projects[search_api_solr][version] = "1.x-dev"
 projects[sharemessage][version] = "1.x-dev"
+projects[swiftmailer][version] = "1.x-dev"
 projects[simple_mail][version] = "1.x-dev"
 projects[simplenews][version] = "1.x-dev"
 projects[simplenews_scheduler][version] = "1.x-dev"
@@ -75,6 +78,7 @@ projects[tmgmt_microsoft][version] = "1.x-dev"
 projects[tmgmt_mygengo][version] = "1.x-dev"
 ; Commented out, syntax error in tests
 ;projects[xmlsitemap][version] = "1.x-dev"
+projects[ultimate_cron][version] = "2.x-dev"
 projects[views_custom_cache_tag][version] = "1.x-dev"
 projects[votingapi][version] = "3.x-dev"
 projects[wysiwyg_linebreaks][version] = "1.x-dev"
@@ -102,11 +106,6 @@ projects[crm_core][download][type] = "git"
 projects[crm_core][download][branch] = "8.x-0.x"
 projects[crm_core][download][url] = "https://github.com/md-systems/crm_core.git"
 
-projects[default_content][type] = "module"
-projects[default_content][download][type] = "git"
-projects[default_content][download][branch] = 8.x
-projects[default_content][download][url] = "https://github.com/larowlan/default_content.git"
-
 projects[fallback_formatter][type] = "module"
 projects[fallback_formatter][download][type] = "git"
 projects[fallback_formatter][download][branch] = 8.x-1.x
@@ -115,7 +114,7 @@ projects[fallback_formatter][download][url] = "https://github.com/drupal-media/f
 projects[file_entity][type] = "module"
 projects[file_entity][download][type] = "git"
 projects[file_entity][download][branch] = 8.x-2.x
-projects[file_entity][download][url] = "https://github.com/md-systems/file_entity.git"
+projects[file_entity][download][url] = "https://github.com/drupal-media/file_entity.git"
 
 projects[media_pinkeye][type] = "module"
 projects[media_pinkeye][download][type] = "git"
@@ -126,11 +125,6 @@ projects[pathauto][type] = "module"
 projects[pathauto][download][type] = "git"
 projects[pathauto][download][branch] = 8.x-1.x
 projects[pathauto][download][url] = "https://github.com/md-systems/pathauto.git"
-
-projects[payment_datatrans][type] = "module"
-projects[payment_datatrans][download][type] = "git"
-projects[payment_datatrans][download][branch] = master
-projects[payment_datatrans][download][url] = "https://github.com/md-systems/datatrans.git"
 
 projects[payment_postfinance][type] = "module"
 projects[payment_postfinance][download][type] = "git"
@@ -151,13 +145,3 @@ projects[redis][type] = "module"
 projects[redis][download][type] = "git"
 projects[redis][download][branch] = 8.x-1.x
 projects[redis][download][url] = "https://github.com/md-systems/redis.git"
-
-projects[swiftmailer][type] = "module"
-projects[swiftmailer][download][type] = "git"
-projects[swiftmailer][download][branch] = 8.x-1.x
-projects[swiftmailer][download][url] = "https://github.com/webflo/drupal-swiftmailer"
-
-projects[ultimate_cron][type] = "module"
-projects[ultimate_cron][download][type] = "git"
-projects[ultimate_cron][download][branch] = 8.x-2.x
-projects[ultimate_cron][download][url] = "https://github.com/md-systems/ultimate_cron.git"
