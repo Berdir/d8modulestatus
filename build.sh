@@ -16,11 +16,11 @@ drush make --working-copy --nocolor --force-complete project.make internal
 cd internal
 drush si -y --nocolor --db-url=mysql://d8modulestatus:$MYSQLPASS@localhost/d8modulestatus minimal
 
-# Enable simpletest and composer manager
-drush en -y --nocolor simpletest composer_manager
+# Drop block_page_layout as its tests are horribly broken and kill simpletest
+rm -r modules/layout_plugin/modules/block_page_layout
 
-# Temporary: Delete invalid composer.json files.
-rm modules/metatag/composer.json
+# Enable simpletest
+drush en -y --nocolor simpletest
 
 # Update composer dependencies
 
