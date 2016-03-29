@@ -15,6 +15,7 @@ projects[address][version] = "1.x-dev"
 projects[allowed_formats][version] = "1.x-dev"
 projects[captcha][version] = "1.x-dev"
 projects[collect][version] = "1.x-dev"
+projects[crm_core][version] = "1.x-dev"
 projects[composer_manager][version] = "1.x-dev"
 projects[contact_storage][version] = "1.x-dev"
 projects[ctools][version] = "3.x-dev"
@@ -33,6 +34,7 @@ projects[entityform_block][version] = "1.x-dev"
 projects[features][version] = "3.x-dev"
 projects[flag][version] = "4.x-dev"
 projects[field_group][version] = "1.x-dev"
+projects[file_entity][version] = "2.x-dev"
 projects[google_analytics][version] = "2.x-dev"
 projects[honeypot][version] = "1.x-dev"
 projects[key_value][version] = "1.x-dev"
@@ -59,6 +61,7 @@ projects[panels][version] = "3.x-dev"
 projects[paragraphs][version] = "1.x-dev"
 projects[past][version] = "1.x-dev"
 projects[pathologic][version] = "1.x-dev"
+projects[pathauto][version] = "1.x-dev"
 projects[payment][version] = "2.x-dev"
 projects[payment_datatrans][version] = "1.x-dev"
 projects[plugin][version] = "2.x-dev"
@@ -88,9 +91,6 @@ projects[votingapi][version] = "3.x-dev"
 projects[wysiwyg_linebreaks][version] = "1.x-dev"
 
 ; Module patches.
-; Adds Collect CRM Core tests.
-projects[collect][patch][] = https://raw.githubusercontent.com/fantastic91/CRM-Core-Collect-tests/master/crm-core-collect-tests.patch
-
 ; Adds Monitoring payment test.
 projects[monitoring][patch][] = https://www.drupal.org/files/issues/add_payment_test-2564195-6.patch
 
@@ -105,30 +105,15 @@ projects[commerce][download][type] = "git"
 projects[commerce][download][branch] = "8.x-2.x"
 projects[commerce][download][url] = "https://github.com/commerceguys/commerce.git"
 
-projects[crm_core][type] = "module"
-projects[crm_core][download][type] = "git"
-projects[crm_core][download][branch] = "8.x-0.x"
-projects[crm_core][download][url] = "https://github.com/md-systems/crm_core.git"
-
 projects[fallback_formatter][type] = "module"
 projects[fallback_formatter][download][type] = "git"
 projects[fallback_formatter][download][branch] = 8.x-1.x
 projects[fallback_formatter][download][url] = "https://github.com/drupal-media/fallback_formatter.git"
 
-projects[file_entity][type] = "module"
-projects[file_entity][download][type] = "git"
-projects[file_entity][download][branch] = 8.x-2.x
-projects[file_entity][download][url] = "https://github.com/drupal-media/file_entity.git"
-
 projects[media_pinkeye][type] = "module"
 projects[media_pinkeye][download][type] = "git"
 projects[media_pinkeye][download][branch] = 8.x-1.x
 projects[media_pinkeye][download][url] = "https://github.com/drupal-media/media_pinkeye"
-
-projects[pathauto][type] = "module"
-projects[pathauto][download][type] = "git"
-projects[pathauto][download][branch] = 8.x-1.x
-projects[pathauto][download][url] = "https://github.com/md-systems/pathauto.git"
 
 projects[payment_postfinance][type] = "module"
 projects[payment_postfinance][download][type] = "git"
