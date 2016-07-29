@@ -16,8 +16,6 @@ drush make --working-copy --nocolor --force-complete project.make internal
 cd internal
 drush si -y --nocolor --db-url=mysql://d8modulestatus:$MYSQLPASS@localhost/d8modulestatus minimal
 
-# Drop block_page_layout as its tests are horribly broken and kill simpletest
-rm -r modules/layout_plugin/modules/block_page_layout
 
 # Enable simpletest
 drush en -y --nocolor simpletest
@@ -25,7 +23,11 @@ drush en -y --nocolor simpletest
 # Update composer dependencies
 
 php ./modules/composer_manager/scripts/init.php
-/usr/local/bin/composer drupal-update
+/usr/local/bin/composer drupal-rebuild
+/usr/local/bin/composer update --lock 
+
+# Drop block_page_layout as its tests are broken and kill simpletest
+rm -r modules/layout_plugin/modules/block_page_layout
 
 # @todo Use mysql?
 export SIMPLETEST_BASE_URL=http://d8modulestatus/
